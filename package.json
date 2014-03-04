@@ -7,12 +7,12 @@
     "atom": ">0.50.0"
   },
   "dependencies": {},
-  "homepage": "https://github.com/zargony/atom-rust",
+  "homepage": "https://github.com/zargony/atom-language-rust",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zargony/atom-rust.git"
+    "url": "https://github.com/zargony/atom-language-rust.git"
   },
   "bugs": {
-    "url": "https://github.com/zargony/atom-rust/issues"
+    "url": "https://github.com/zargony/atom-language-rust/issues"
   }
 }
