@@ -1,0 +1,175 @@
+'name': 'Rust'
+'scopeName': 'source.rust'
+'fileTypes': [
+  'rs'
+]
+'repository': {
+  'escaped_character': {
+    'name': 'constant.character.escape.rust'
+    # FIXME: check escaped character regexp
+    'match': '\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
+  }
+}
+'patterns': [
+  # Comments
+  {
+    'comment': 'Block documentation comment'
+    'name': 'comment.block.documentation.rust'
+    'begin': '/\\*[!\\*][^\\*]'
+    'end': '\\*/'
+  }
+  {
+    'comment': 'Block comment'
+    'name': 'comment.block.rust'
+    'begin': '/\\*'
+    'end': '\\*/'
+    # TODO: nested comment blocks
+  }
+  {
+    'comment': 'Single-line documentation comment'
+    'name': 'comment.line.documentation.rust'
+    'match': '//[!/][^/].*$'
+  }
+  {
+    'comment': 'Single-line comment'
+    'name': 'comment.line.double-slash.rust'
+    'match': '//.*$'
+  }
+  # Attributes
+  {
+    'comment': 'Attribute'
+    'name': 'meta.attribute.rust'
+    'begin': '#\\['
+    'end': '\\];?'
+  }
+  # Strings
+  {
+    'comment': 'Single-quote string'
+    'name': 'string.quoted.single.rust'
+    'begin': '\''
+    'end': '\''
+    'patterns': { 'include': '#escaped_character' }
+  }
+  {
+    'comment': 'Double-quote string'
+    'name': 'string.quoted.double.rust'
+    'begin': '"'
+    'end': '"'
+    'patterns': { 'include': '#escaped_character' }
+  }
+  # Numbers
+  {
+    'comment': 'Floating point number (fraction)'
+    'name': 'constant.numeric.float.rust'
+    'match': '\\b[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-][0-9_]+)?(f32|f64)?\\b'
+  }
+  {
+    'comment': 'Floating point number (exponent)'
+    'name': 'constant.numeric.float.rust'
+    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?[eE][+-][0-9_]+(f32|f64)?\\b'
+  }
+  {
+    'comment': 'Floating point number (typed)'
+    'name': 'constant.numeric.float.rust'
+    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-][0-9_]+)?(f32|f64)\\b'
+  }
+  {
+    'comment': 'Integer number (decimal)'
+    'name': 'constant.numeric.integer.decimal.rust'
+    'match': '\\b[0-9][0-9_]*([ui](8|16|32|64)?)?\\b'
+  }
+  {
+    'comment': 'Integer number (hexadecimal)'
+    'name': 'constant.numeric.integer.hexadecimal.rust'
+    'match': '\\b0x[a-fA-F0-9_]+([ui](8|16|32|64)?)?\\b'
+  }
+  {
+    'comment': 'Integer number (octal)'
+    'name': 'constant.numeric.integer.octal.rust'
+    'match': '\\b0o[0-7_]+([ui](8|16|32|64)?)?\\b'
+  }
+  {
+    'comment': 'Integer number (binary)'
+    'name': 'constant.numeric.integer.binary.rust'
+    'match': '\\b0b[01_]+([ui](8|16|32|64)?)?\\b'
+  }
+  # TODO: regions
+  # Language
+  {
+    'comment': 'Built-in type'
+    'name': 'storage.type.rust'
+    'match': '\\b(bool|char|uint|int|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self)\\b'
+  }
+  {
+    'comment': 'Type declaration'
+    'name': 'storage.type.rust'
+    'match': '\\b(enum|struct|trait|type)\\b'
+  }
+  {
+    'comment': 'Storage modifier'
+    'name': 'storage.modifier.rust'
+    'match': '\\b(mut|static)\\b'
+  }
+  {
+    'comment': 'Visibility modifier'
+    'name': 'storage.modifier.visibility.rust'
+    'match': '\\b(priv|pub)\\b'
+  }
+  {
+    'comment': 'Self variable'
+    'name': 'variable.language.rust'
+    'match': '\\bself\\b'
+  }
+  {
+    'comment': 'Boolean constant'
+    'name': 'constant.language.boolean.rust'
+    'match': '\\b(true|false)\\b'
+  }
+  {
+    'comment': 'Control keyword'
+    'name': 'keyword.control.rust'
+    'match': '\\b(break|continue|do|else|if|in|for|loop|match|return|while)\\b'
+  }
+  {
+    'comment': 'Keyword'
+    'name': 'keyword.other.rust'
+    'match': '\\b(as|crate|extern|fn|impl|mod|let|proc|ref|use)\\b'
+  }
+  {
+    'comment': 'Unsafe code keyword'
+    'name': 'keyword.other.unsafe.rust'
+    'match': '\\bunsafe\\b'
+  }
+  # TODO: operators
+  # TODO: function definition
+  # Built-in traits (kinds)
+  {
+    'comment': 'Built-in trait (kind)'
+    'name': 'support.type.kind.rust'
+    'match': '\\b(Freeze|Pod|Send|Sized)\\b'
+  }
+  # TODO: _
+  # TODO: procs and closures
+  # Standard library
+  {
+    'comment': 'Standard library macro'
+    'name': 'support.function.std.rust'
+    'match': '\\b(log|error|warn|info|debug|log_enabled|fail|assert|assert_eq|unreachable|unimplemented|format|write|writeln|print|println|local_data_key|try|vec|select)!'
+  }
+  {
+    'comment': 'Standard library type'
+    'name': 'support.class.std.rust'
+    'match': '\\b(Cell|RefCell|Option|Result|IoResult|Any)'
+  }
+  {
+    'comment': 'Standard library type variant'
+    'name': 'support.type.std.rust'
+    'match': '\\b(Some|None|Ok|Err)\\b'
+  }
+  {
+    'comment': 'Standard library constant'
+    'name': 'support.constant.std.rust'
+    'match': '\\b(Some|None|Ok|Err)\\b'
+  }
+  # TODO: macros
+]

@@ -1,0 +1,18 @@
+{
+  "name": "language-rust",
+  "version": "0.0.1",
+  "description": "Rust language support for the Atom editor",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "homepage": "https://github.com/zargony/atom-rust",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zargony/atom-rust.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zargony/atom-rust/issues"
+  }
+}
