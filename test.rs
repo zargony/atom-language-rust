@@ -1,9 +1,11 @@
 text
 /* this is a
-block comment */
+/* nested
+block */ comment */
 text
 /** this is a
-block doc comment */
+/*! nested
+block */ doc comment */
 text
 
 text

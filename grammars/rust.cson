@@ -4,6 +4,26 @@
   'rs'
 ]
 'repository': {
+  'block_doc_comment': {
+    'comment': 'Block documentation comment'
+    'name': 'comment.block.documentation.rust'
+    'begin': '/\\*[!\\*][^\\*]'
+    'end': '\\*/'
+    'patterns': [
+        { 'include': '#block_doc_comment' }
+        { 'include': '#block_comment' }
+    ]
+  }
+  'block_comment': {
+    'comment': 'Block comment'
+    'name': 'comment.block.rust'
+    'begin': '/\\*'
+    'end': '\\*/'
+    'patterns': [
+        { 'include': '#block_doc_comment' }
+        { 'include': '#block_comment' }
+    ]
+  }
   'escaped_character': {
     'name': 'constant.character.escape.rust'
     # FIXME: check escaped character regexp
@@ -12,19 +32,8 @@
 }
 'patterns': [
   # Comments
-  {
-    'comment': 'Block documentation comment'
-    'name': 'comment.block.documentation.rust'
-    'begin': '/\\*[!\\*][^\\*]'
-    'end': '\\*/'
-  }
-  {
-    'comment': 'Block comment'
-    'name': 'comment.block.rust'
-    'begin': '/\\*'
-    'end': '\\*/'
-    # TODO: nested comment blocks
-  }
+  { 'include': '#block_doc_comment' }
+  { 'include': '#block_comment' }
   {
     'comment': 'Single-line documentation comment'
     'name': 'comment.line.documentation.rust'
