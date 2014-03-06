@@ -90,7 +90,7 @@ pub trait MyTrait {
   text
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool;
   text
-  fn do_even_more<T: Send+Whatever, U: Freeze> (&mut self, param: &T) -> U;
+  fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U;
   text
 }
 text
@@ -111,10 +111,21 @@ impl MyTrait for MyStruct {
   text
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool {
     info!("There's no cake");
+    if !test_subject.under_control() {
+      text
+      self.announce_warning();
+      text
+      if test_subject.ignored_warnings > 3 {
+        text
+        test_subject.incinerate();
+        text
+      }
+      text
+    }
     text
   }
   text
-  fn do_even_more<T: Send+Whatever, U: Freeze> (&mut self, param: &T) -> U {
+  fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U {
     text
   }
   text

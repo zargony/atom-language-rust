@@ -28,6 +28,30 @@
     'name': 'constant.character.escape.rust'
     'match': '\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
   }
+  'region': {
+    'comment': 'Named region'
+    'name': 'storage.modifier.region.rust'
+    'match': '\'([a-zA-Z_][a-zA-Z0-9_]*)\\b'
+    'captures': {
+      '1': { 'name': 'entity.name.region.rust' }
+    }
+  }
+  'kinds': {
+    'comment': 'Built-in trait (kind)'
+    'name': 'support.type.kind.rust'
+    'match': '\\b(Freeze|Pod|Send|Sized)\\b'
+  }
+  'type_params': {
+    'comment': 'Type parameters'
+    'name': 'meta.type_params.rust'
+    'begin': '<'
+    'end': '>'
+    'patterns': [
+      { 'include': '#region' }
+      { 'include': '#kinds' }
+      { 'include': '#type_params' }
+    ]
+  }
 }
 'patterns': [
   # Comments
@@ -105,7 +129,6 @@
     'name': 'constant.numeric.integer.binary.rust'
     'match': '\\b0b[01_]+([ui](8|16|32|64)?)?\\b'
   }
-  # TODO: regions
   # Language
   {
     'comment': 'Built-in type'
@@ -145,7 +168,7 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(as|crate|extern|fn|impl|mod|let|proc|ref|use)\\b'
+    'match': '\\b(as|crate|extern|impl|mod|let|proc|ref|use)\\b'
   }
   {
     'comment': 'Unsafe code keyword'
@@ -153,16 +176,10 @@
     'match': '\\bunsafe\\b'
   }
   # TODO: operators
-  # TODO: function definition
-  # Built-in traits (kinds)
-  {
-    'comment': 'Built-in trait (kind)'
-    'name': 'support.type.kind.rust'
-    'match': '\\b(Freeze|Pod|Send|Sized)\\b'
-  }
   # TODO: _
   # TODO: procs and closures
   # Standard library
+  { 'include': '#kinds' }
   {
     'comment': 'Standard library macro'
     'name': 'support.function.std.rust'
@@ -183,5 +200,22 @@
     'name': 'support.constant.std.rust'
     'match': '\\b(Some|None|Ok|Err)\\b'
   }
-  # TODO: macros
+  # TODO: function and macro calls
+  # Type parameters
+  # FIXME: type params are included globally for now
+  { 'include': '#type_params' }
+  # Function definition
+  {
+    'comment': 'Function definition'
+    'begin': '\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)'
+    'end': '[\\{;]'
+    'captures': {
+      '1': { 'name': 'keyword.other.fn.rust' }
+      '2': { 'name': 'entity.name.function.rust' }
+    }
+    'patterns': [
+      { 'include': '#type_params' }
+      # FIXME: function parameters and result type are not highlighted
+    ]
+  }
 ]
