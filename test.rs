@@ -1,7 +1,11 @@
 text
 /* this is a
 /* nested
-block */ comment */
+block */ comment.
+And should stay a comment
+even with "strings"
+or 42 0x18 0b01011   // blah
+or u32 as i16 if impl */
 text
 /** this is a
 /*! nested
