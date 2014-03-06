@@ -10,8 +10,8 @@
     'begin': '/\\*[!\\*][^\\*]'
     'end': '\\*/'
     'patterns': [
-        { 'include': '#block_doc_comment' }
-        { 'include': '#block_comment' }
+      { 'include': '#block_doc_comment' }
+      { 'include': '#block_comment' }
     ]
   }
   'block_comment': {
@@ -20,8 +20,8 @@
     'begin': '/\\*'
     'end': '\\*/'
     'patterns': [
-        { 'include': '#block_doc_comment' }
-        { 'include': '#block_comment' }
+      { 'include': '#block_doc_comment' }
+      { 'include': '#block_comment' }
     ]
   }
   'escaped_character': {
@@ -57,7 +57,7 @@
     'begin': '\''
     'end': '\''
     'patterns': [
-        { 'include': '#escaped_character' }
+      { 'include': '#escaped_character' }
     ]
   }
   {
@@ -66,7 +66,7 @@
     'begin': '"'
     'end': '"'
     'patterns': [
-        { 'include': '#escaped_character' }
+      { 'include': '#escaped_character' }
     ]
   }
   # Numbers

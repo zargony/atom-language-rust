@@ -24,6 +24,7 @@ text #[deny(silly_comments)] text
 text 'single-quote string' text
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
+text "string with // comment /* inside" text
 
 text 42f32 text
 text 42e+18 text
