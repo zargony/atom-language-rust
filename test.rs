@@ -114,7 +114,7 @@ impl<'foo> MyTrait for MyStruct<'foo> {
   }
   text
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool {
-    info!("There's no cake");
+    announce!("There's no cake");
     if !test_subject.under_control() {
       text
       self.announce_warning();

@@ -231,7 +231,21 @@
     'name': 'support.constant.std.rust'
     'match': '\\b(Some|None|Ok|Err)\\b'
   }
-  # TODO: function and macro calls
+  # Function and macro calls
+  {
+    'comment': 'Invokation of a macro'
+    'match': '\\b([a-zA-Z_][a-zA-Z0-9_]*\\!)\\s*\\('
+    'captures': {
+      '1': { 'name': 'entity.name.function.macro.rust' }
+    }
+  }
+  {
+    'comment': 'Function call'
+    'match': '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
+    'captures': {
+      '1': { 'name': 'entity.name.function.rust' }
+    }
+  }
   # Function definition
   {
     'comment': 'Function definition'
