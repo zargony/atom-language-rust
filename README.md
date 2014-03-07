@@ -2,12 +2,9 @@
 
 ## Install
 
-This package is different from the official `language-rust` package in Atom's package repository. Make sure to uninstall the official `language-rust` first if you use it!
+Install the package `language-rust` in Atom (Preferences->Packages) or use this shell command:
 
-Clone this repository to your Atom package directory.
-
-    # apm uninstall language-rust
-    # git clone https://github.com/zargony/atom-language-rust.git ~/.atom/packages/language-rust
+    # apm install language-rust
 
 ## Bugs
 
