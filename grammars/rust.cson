@@ -230,7 +230,7 @@
     'comment': 'Function definition'
     'begin': '\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)'
     'end': '[\\{;]'
-    'captures': {
+    'beginCaptures': {
       '1': { 'name': 'keyword.other.fn.rust' }
       '2': { 'name': 'entity.name.function.rust' }
     }
