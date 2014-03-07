@@ -1,0 +1,120 @@
+'.source.rust':
+  'enum':
+    'prefix': 'enum'
+    'body': '''
+      enum ${1:TypeName} {
+        $2
+      }
+    '''
+  'fn':
+    'prefix': 'fn'
+    'body': '''
+      fn ${1:function_name}($2) {
+        $3
+      }
+    '''
+  'fnr':
+    'prefix': 'fnr'
+    'body': '''
+      fn ${1:function_name}($2) -> $3 {
+        $4
+      }
+    '''
+  'for':
+    'prefix': 'for'
+    'body': '''
+      for ${1:variable} in ${2:iterator} {
+        $3
+      }
+    '''
+  'if':
+    'prefix': 'if'
+    'body': '''
+      if ${1:expression} {
+        $2
+      }
+    '''
+  'impl':
+    'prefix': 'impl'
+    'body': '''
+      impl ${1:TypeName} {
+        $2
+      }
+    '''
+  'let':
+    'prefix': 'let'
+    'body': 'let ${1:variable} = ${2:value};'
+  'loop':
+    'prefix': 'loop'
+    'body': '''
+      loop {
+        $1
+      }
+    '''
+  'macro':
+    'prefix': 'macro'
+    'body': '''
+      macro_rules! ${1:macro_name} (
+        ($2) => ($3)
+      )
+    '''
+  'main':
+    'prefix': 'main'
+    'body': '''
+      fn main() {
+        $1
+      }
+    '''
+  'match':
+    'prefix': 'match'
+    'body': '''
+      match ${1:expression} {
+        $2
+      }
+    '''
+  'static':
+    'prefix': 'static'
+    'body': 'static ${1:CONSTANT}: ${2:TypeName} = ${3:value};'
+  'struct':
+    'prefix': 'struct'
+    'body': '''
+      struct ${1:TypeName} {
+        $2
+      }
+    '''
+  'test':
+    'prefix': 'test'
+    'body': '''
+      #[test]
+      fn ${1:test_name}() {
+        $2
+      }
+    '''
+  'testmod':
+    'prefix': 'testmod'
+    'body': '''
+      #[cfg(test)]
+      mod test {
+        #[test]
+        fn ${1:test_name}() {
+          $2
+        }
+      }
+    '''
+  'trait':
+    'prefix': 'trait'
+    'body': '''
+      trait ${1:TypeName} {
+        $2
+      }
+    '''
+  'type':
+    'prefix': 'type'
+    'body': 'type ${1:TypeName} = ${2:TypeName};'
+  'while':
+    'prefix': 'while'
+    'body': '''
+      while ${1:expression} {
+        $2
+      }
+    '''
