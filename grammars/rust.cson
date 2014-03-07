@@ -48,6 +48,16 @@
     'name': 'support.type.kind.rust'
     'match': '\\b(Freeze|Pod|Send|Sized)\\b'
   }
+  'self': {
+    'comment': 'Self variable'
+    'name': 'variable.language.rust'
+    'match': '\\bself\\b'
+  }
+  'mut': {
+    'comment': 'Mutable storage modifier'
+    'name': 'storage.modifier.mut.rust'
+    'match': '\\bmut\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -154,25 +164,22 @@
   }
   # Language
   { 'include': '#types' }
+  { 'include': '#self' }
+  { 'include': '#mut' }
   {
     'comment': 'Type declaration'
     'name': 'storage.type.rust'
     'match': '\\b(enum|struct|trait|type)\\b'
   }
   {
-    'comment': 'Storage modifier'
-    'name': 'storage.modifier.rust'
-    'match': '\\b(mut|static)\\b'
+    'comment': 'Static storage modifier'
+    'name': 'storage.modifier.static.rust'
+    'match': '\\bstatic\\b'
   }
   {
     'comment': 'Visibility modifier'
     'name': 'storage.modifier.visibility.rust'
     'match': '\\b(priv|pub)\\b'
-  }
-  {
-    'comment': 'Self variable'
-    'name': 'variable.language.rust'
-    'match': '\\bself\\b'
   }
   {
     'comment': 'Boolean constant'
@@ -239,6 +246,8 @@
       { 'include': '#types' }
       { 'include': '#std_types' }
       { 'include': '#kinds' }
+      { 'include': '#self' }
+      { 'include': '#mut' }
       { 'include': '#ref_lifetime' }
       { 'include': '#type_params' }
     ]
