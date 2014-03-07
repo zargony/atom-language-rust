@@ -3,6 +3,7 @@
 'fileTypes': [
   'rs'
 ]
+
 'repository': {
   'block_doc_comment': {
     'comment': 'Block documentation comment'
@@ -85,7 +86,21 @@
       { 'include': '#type_params' }
     ]
   }
+  'declaration': {
+    'comment': 'Declaration of variables'
+    'patterns': [
+      { 'include': '#sigils' }
+      { 'include': '#types' }
+      { 'include': '#std_types' }
+      { 'include': '#kinds' }
+      { 'include': '#self' }
+      { 'include': '#mut' }
+      { 'include': '#ref_lifetime' }
+      { 'include': '#type_params' }
+    ]
+  }
 }
+
 'patterns': [
   # Comments
   { 'include': '#block_doc_comment' }
@@ -256,14 +271,7 @@
       '2': { 'name': 'entity.name.function.rust' }
     }
     'patterns': [
-      { 'include': '#sigils' }
-      { 'include': '#types' }
-      { 'include': '#std_types' }
-      { 'include': '#kinds' }
-      { 'include': '#self' }
-      { 'include': '#mut' }
-      { 'include': '#ref_lifetime' }
-      { 'include': '#type_params' }
+      { 'include': '#declaration' }
     ]
   }
 ]
