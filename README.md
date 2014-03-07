@@ -1,10 +1,14 @@
-# Rust language support for the Atom editor
+# Rust language support in Atom
+
+Adds syntax highlighting and snippets to [Rust](http://www.rust-lang.org/) files in [Atom](http://atom.io/).
 
 ## Install
 
-Install the package `language-rust` in Atom (Preferences->Packages) or use this shell command:
+Install the package `language-rust` in Atom (Preferences->Packages) or Atom's package manager from a shell:
 
-    # apm install language-rust
+```bash
+$ apm install language-rust
+```
 
 ## Bugs
 
