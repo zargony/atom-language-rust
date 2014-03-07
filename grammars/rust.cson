@@ -28,6 +28,11 @@
     'name': 'constant.character.escape.rust'
     'match': '\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
   }
+  'sigils': {
+    'comment': 'Sigil'
+    'name': 'keyword.operator.sigil.rust'
+    'match': '[&~@*](?=[a-zA-Z0-9_\\[\\"]+)'
+  }
   'types': {
     'comment': 'Built-in type'
     'name': 'storage.type.rust'
@@ -191,13 +196,8 @@
   }
   # Type parameters
   { 'include': '#type_params' }
-  # Sigils
-  {
-    'comment': 'Sigil'
-    'name': 'keyword.operator.sigil.rust'
-    'match': '[&~@*](?=[a-zA-Z0-9_]+)'
-  }
   # Operators
+  { 'include': '#sigils' }
   { 'include': '#ref_lifetime' }
   {
     'comment': 'Operator'
@@ -235,6 +235,7 @@
       '2': { 'name': 'entity.name.function.rust' }
     }
     'patterns': [
+      { 'include': '#sigils' }
       { 'include': '#types' }
       { 'include': '#std_types' }
       { 'include': '#kinds' }
