@@ -139,7 +139,7 @@ text
 text
 impl MyStruct<'foo> {
   text
-  pub fn with_something<T: Send> (param: &T, |int, &str| -> T, other_param: u32) -> T {
+  pub fn with_something<T: Send> (param: &T, f: |int, &str| -> T, other_param: u32) -> T {
     text
     f(123, "hello")
     text
