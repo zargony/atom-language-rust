@@ -38,18 +38,26 @@
     'name': 'support.class.std.rust'
     'match': '\\b(Cell|RefCell|Option|Result|IoResult|Any)'
   }
-  'region': {
-    'comment': 'Named region'
-    'name': 'storage.modifier.region.rust'
-    'match': '\'([a-zA-Z_][a-zA-Z0-9_]*)\\b'
-    'captures': {
-      '1': { 'name': 'entity.name.region.rust' }
-    }
-  }
   'kinds': {
     'comment': 'Built-in trait (kind)'
     'name': 'support.type.kind.rust'
     'match': '\\b(Freeze|Pod|Send|Sized)\\b'
+  }
+  'lifetime': {
+    'comment': 'Named lifetime'
+    'name': 'storage.modifier.lifetime.rust'
+    'match': '\'([a-zA-Z_][a-zA-Z0-9_]*)\\b'
+    'captures': {
+      '1': { 'name': 'entity.name.lifetime.rust' }
+    }
+  }
+  'ref_lifetime': {
+    'comment': 'Reference with named lifetime'
+    'name': 'storage.modifier.lifetime.rust'
+    'match': '&\'([a-zA-Z_][a-zA-Z0-9_]*)\\b'
+    'captures': {
+      '1': { 'name': 'entity.name.lifetime.rust' }
+    }
   }
   'type_params': {
     'comment': 'Type parameters'
@@ -57,8 +65,8 @@
     'begin': '<'
     'end': '>'
     'patterns': [
-      { 'include': '#region' }
       { 'include': '#kinds' }
+      { 'include': '#lifetime' }
       { 'include': '#type_params' }
     ]
   }
@@ -190,6 +198,7 @@
     'match': '[&~@*](?=[a-zA-Z0-9_]+)'
   }
   # Operators
+  { 'include': '#ref_lifetime' }
   {
     'comment': 'Operator'
     'name': 'keyword.operator.rust'
@@ -228,8 +237,8 @@
     'patterns': [
       { 'include': '#types' }
       { 'include': '#std_types' }
-      { 'include': '#region' }
       { 'include': '#kinds' }
+      { 'include': '#ref_lifetime' }
       { 'include': '#type_params' }
     ]
   }

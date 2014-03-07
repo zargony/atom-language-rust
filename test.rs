@@ -67,9 +67,10 @@ pub enum MyEnum {
 text
 
 text
-pub struct MyStruct {
+pub struct MyStruct<'foo> {
   priv one: uint,
-  two: MyEnum
+  two: Option<MyEnum>,
+  three: &'foo int,
 }
 text
 
@@ -78,7 +79,7 @@ type MyType = uint;
 text
 
 text
-static MY_CONSTANT: u32 = 12345;
+static MY_CONSTANT: ~str = ~"hello";
 text
 
 text
@@ -96,7 +97,7 @@ pub trait MyTrait {
 text
 
 text
-impl MyTrait for MyStruct {
+impl<'foo> MyTrait for MyStruct<'foo> {
   text
   fn create_something (param: &str, mut other_param: u32) -> Option<Self> {
     text
@@ -107,6 +108,9 @@ impl MyTrait for MyStruct {
   fn do_whatever<T: Send+Pod+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U> {
     assert!(1 != 2);
     text
+    self.with_something(param, |arg1, arg2| {
+      text
+    }, other_param);
   }
   text
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool {
@@ -126,6 +130,18 @@ impl MyTrait for MyStruct {
   }
   text
   fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U {
+    text
+  }
+  text
+}
+text
+
+text
+impl MyStruct<'foo> {
+  text
+  pub fn with_something<T: Send> (param: &T, |int, &str| -> T, other_param: u32) -> T {
+    text
+    f(123, "hello")
     text
   }
   text
