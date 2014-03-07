@@ -168,14 +168,27 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(as|crate|extern|impl|mod|let|proc|ref|use)\\b'
+    'match': '\\b(crate|extern|impl|mod|let|proc|ref|use)\\b'
   }
   {
     'comment': 'Unsafe code keyword'
     'name': 'keyword.other.unsafe.rust'
     'match': '\\bunsafe\\b'
   }
-  # TODO: operators
+  # Type parameters
+  { 'include': '#type_params' }
+  # Sigils
+  {
+    'comment': 'Sigil'
+    'name': 'keyword.operator.sigil.rust'
+    'match': '[&~@*](?=[a-zA-Z0-9_]+)'
+  }
+  # Operators
+  {
+    'comment': 'Operator'
+    'name': 'keyword.operator.rust'
+    'match': '(\\+|-|/|\\*|=|\\^|&|\\||!|>|<|%|\\bas\\b)'
+  }
   # TODO: _
   # TODO: procs and closures
   # Standard library
@@ -201,9 +214,6 @@
     'match': '\\b(Some|None|Ok|Err)\\b'
   }
   # TODO: function and macro calls
-  # Type parameters
-  # FIXME: type params are included globally for now
-  { 'include': '#type_params' }
   # Function definition
   {
     'comment': 'Function definition'
