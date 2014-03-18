@@ -215,7 +215,7 @@
   {
     'comment': 'Operator'
     'name': 'keyword.operator.rust'
-    'match': '(\\+|-|/|\\*|=|\\^|&|\\||!|>|<|%|\\bas\\b)'
+    'match': '(\\+|-|/|\\*|=|\\^|&|\\||!|>|<|%|::|\\bas\\b)'
   }
   # TODO: procs and closures
   # Standard library
