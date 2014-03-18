@@ -42,7 +42,7 @@
   'sigils': {
     'comment': 'Sigil'
     'name': 'keyword.operator.sigil.rust'
-    'match': '[&~@*](?=[a-zA-Z0-9_\\[\\"]+)'
+    'match': '[&~@*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
   }
   'types': {
     'comment': 'Built-in type'
