@@ -25,6 +25,16 @@
       { 'include': '#block_comment' }
     ]
   }
+  'line_doc_comment': {
+    'comment': 'Single-line documentation comment'
+    'name': 'comment.line.documentation.rust'
+    'match': '//[!/][^/].*$'
+  }
+  'line_comment': {
+    'comment': 'Single-line comment'
+    'name': 'comment.line.double-slash.rust'
+    'match': '//.*$'
+  }
   'escaped_character': {
     'name': 'constant.character.escape.rust'
     'match': '\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
@@ -105,16 +115,8 @@
   # Comments
   { 'include': '#block_doc_comment' }
   { 'include': '#block_comment' }
-  {
-    'comment': 'Single-line documentation comment'
-    'name': 'comment.line.documentation.rust'
-    'match': '//[!/][^/].*$'
-  }
-  {
-    'comment': 'Single-line comment'
-    'name': 'comment.line.double-slash.rust'
-    'match': '//.*$'
-  }
+  { 'include': '#line_doc_comment' }
+  { 'include': '#line_comment' }
   # Attributes
   {
     'comment': 'Attribute'
