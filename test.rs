@@ -69,7 +69,7 @@ text
 text
 pub struct MyStruct<'foo> {
   priv one: uint,
-  two: Option<MyEnum>,
+  two: Option<'a, MyEnum>,
   three: &'foo int,
 }
 text
@@ -131,7 +131,7 @@ impl<'foo> MyTrait for MyStruct<'foo> {
   text
   fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U {
     text
-    let foo: Option<uint> = Some(18);
+    let foo: Option<'a uint> = Some(18);
     text
     if self.one < 1 {
         text
