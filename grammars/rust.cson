@@ -91,7 +91,13 @@
     'begin': '<'
     'end': '>'
     'patterns': [
+      { 'include': '#block_comment' }
+      { 'include': '#line_comment' }
+      { 'include': '#sigils' }
+      { 'include': '#types' }
+      { 'include': '#std_types' }
       { 'include': '#kinds' }
+      { 'include': '#mut' }
       { 'include': '#lifetime' }
       { 'include': '#type_params' }
     ]
