@@ -102,19 +102,6 @@
       { 'include': '#type_params' }
     ]
   }
-  'declaration': {
-    'comment': 'Declaration of variables'
-    'patterns': [
-      { 'include': '#sigils' }
-      { 'include': '#types' }
-      { 'include': '#std_types' }
-      { 'include': '#kinds' }
-      { 'include': '#self' }
-      { 'include': '#mut' }
-      { 'include': '#ref_lifetime' }
-      { 'include': '#type_params' }
-    ]
-  }
 }
 
 'patterns': [
@@ -186,9 +173,6 @@
     'match': '\\b0b[01_]+([ui](8|16|32|64)?)?\\b'
   }
   # Language
-  { 'include': '#types' }
-  { 'include': '#self' }
-  { 'include': '#mut' }
   {
     'comment': 'Type declaration'
     'name': 'storage.type.rust'
@@ -224,21 +208,23 @@
     'name': 'keyword.other.unsafe.rust'
     'match': '\\bunsafe\\b'
   }
-  # Type parameters
+  # TODO: _
+  { 'include': '#sigils' }
+  { 'include': '#types' }
+  { 'include': '#std_types' }
+  { 'include': '#kinds' }
+  { 'include': '#self' }
+  { 'include': '#mut' }
+  { 'include': '#ref_lifetime' }
   { 'include': '#type_params' }
   # Operators
-  { 'include': '#sigils' }
-  { 'include': '#ref_lifetime' }
   {
     'comment': 'Operator'
     'name': 'keyword.operator.rust'
     'match': '(\\+|-|/|\\*|=|\\^|&|\\||!|>|<|%|\\bas\\b)'
   }
-  # TODO: _
   # TODO: procs and closures
   # Standard library
-  { 'include': '#std_types' }
-  { 'include': '#kinds' }
   {
     'comment': 'Standard library macro'
     'name': 'support.function.std.rust'
@@ -272,14 +258,10 @@
   # Function definition
   {
     'comment': 'Function definition'
-    'begin': '\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)'
-    'end': '[\\{;]'
-    'beginCaptures': {
+    'match': '\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)'
+    'captures': {
       '1': { 'name': 'keyword.other.fn.rust' }
       '2': { 'name': 'entity.name.function.rust' }
     }
-    'patterns': [
-      { 'include': '#declaration' }
-    ]
   }
 ]
