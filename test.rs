@@ -18,7 +18,9 @@ text /// line doc comment
 text //! line doc comment
 text
 
-text #[allow(great_algorithms)]; text
+text #![main] text
+text #![allow(great_algorithms)] text
+text #![!resolve_unexported] text
 text #[deny(silly_comments)] text
 
 text 'single-quote string' text

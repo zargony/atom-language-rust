@@ -114,8 +114,8 @@
   {
     'comment': 'Attribute'
     'name': 'meta.attribute.rust'
-    'begin': '#\\['
-    'end': '\\];?'
+    'begin': '#\\!?\\['
+    'end': '\\]'
   }
   # Strings
   {
