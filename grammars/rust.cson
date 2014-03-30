@@ -57,7 +57,7 @@
   'kinds': {
     'comment': 'Built-in trait (kind)'
     'name': 'support.type.kind.rust'
-    'match': '\\b(Freeze|Pod|Send|Sized)\\b'
+    'match': '\\b(Send|Sized|Copy|Share)\\b'
   }
   'self': {
     'comment': 'Self variable'
