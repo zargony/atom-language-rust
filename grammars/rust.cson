@@ -52,7 +52,7 @@
   'std_types': {
     'comment': 'Standard library type'
     'name': 'support.class.std.rust'
-    'match': '\\b(Cell|RefCell|Option|Result|IoResult|Sender|SyncSender|Receiver|Any)'
+    'match': '\\b(Vec|StrBuf|Option|Result|IoError|IoResult|Sender|SyncSender|Receiver|Cell|RefCell|Any)'
   }
   'kinds': {
     'comment': 'Built-in trait (kind)'

@@ -54,7 +54,7 @@ text let text proc text ref text
 text
 extern crate foo;
 text
-use std::vec;
+use std::slice;
 text
 use std::{num, str};
 text
@@ -89,7 +89,7 @@ pub trait MyTrait {
   text
   fn create_something (param: &str, mut other_param: u32) -> Option<Self>;
   text
-  fn do_whatever<T: Send+Pod+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U>;
+  fn do_whatever<T: Send+Share+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U>;
   text
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool;
   text
@@ -107,7 +107,7 @@ impl<'foo> MyTrait for MyStruct<'foo> {
     text
   }
   text
-  fn do_whatever<T: Send+Pod+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U> {
+  fn do_whatever<T: Send+Share+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U> {
     assert!(1 != 2);
     text
     self.with_something(param, |arg1, arg2| {
@@ -118,6 +118,8 @@ impl<'foo> MyTrait for MyStruct<'foo> {
   fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool {
     announce!("There's no cake");
     if !test_subject.under_control() {
+      text
+      let list: Vec<item> = some_iterator.map(|elem| elem.dosomething()).collect();
       text
       self.announce_warning();
       text
