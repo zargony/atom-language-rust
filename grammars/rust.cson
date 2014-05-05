@@ -69,6 +69,11 @@
     'name': 'storage.modifier.mut.rust'
     'match': '\\bmut\\b'
   }
+  'box': {
+    'comment': 'Box storage modifier'
+    'name': 'storage.modifier.box.rust'
+    'match': '\\bbox\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -210,6 +215,7 @@
   { 'include': '#kinds' }
   { 'include': '#self' }
   { 'include': '#mut' }
+  { 'include': '#box' }
   { 'include': '#ref_lifetime' }
   # Operators
   {

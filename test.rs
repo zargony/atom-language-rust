@@ -121,6 +121,8 @@ impl<'foo> MyTrait for MyStruct<'foo> {
       text
       let list: Vec<item> = some_iterator.map(|elem| elem.dosomething()).collect();
       text
+      let boxed_list = box list;
+      text
       self.announce_warning();
       text
       if test_subject.ignored_warnings > 3 {
