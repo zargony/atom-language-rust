@@ -232,11 +232,6 @@
   }
   {
     'comment': 'Standard library type variant'
-    'name': 'support.type.std.rust'
-    'match': '\\b(Some|None|Ok|Err)\\b'
-  }
-  {
-    'comment': 'Standard library constant'
     'name': 'support.constant.std.rust'
     'match': '\\b(Some|None|Ok|Err)\\b'
   }
