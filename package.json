@@ -1,6 +1,6 @@
 {
   "name": "language-rust",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Rust language support in Atom",
   "license": "MIT",
   "engines": {
