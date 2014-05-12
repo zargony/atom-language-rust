@@ -23,10 +23,14 @@ text #![allow(great_algorithms)] text
 text #![!resolve_unexported] text
 text #[deny(silly_comments)] text
 
-text 'single-quote string' text
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
 text "string with // comment /* inside" text
+
+text 'c' text
+text '\n' text
+text '\x20' text
+text '\'' text
 
 text 42f32 text
 text 42e+18 text
@@ -160,3 +164,9 @@ impl MyStruct<'foo> {
   text
 }
 text
+
+'infinity: loop {
+  do_serious_stuff();
+  use_a_letter('Z');
+  break 'infinity;
+}
