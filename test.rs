@@ -22,6 +22,7 @@ text #![main] text
 text #![allow(great_algorithms)] text
 text #![!resolve_unexported] text
 text #[deny(silly_comments)] text
+#[doc = "This attribute contains ] a attribute ending character"]
 
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
