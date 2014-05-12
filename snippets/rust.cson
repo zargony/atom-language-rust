@@ -3,42 +3,42 @@
     'prefix': 'enum'
     'body': '''
       enum ${1:TypeName} {
-        $2
+      \t$2
       }
     '''
   'fn':
     'prefix': 'fn'
     'body': '''
       fn ${1:function_name}($2) {
-        $3
+      \t$3
       }
     '''
   'fnr':
     'prefix': 'fnr'
     'body': '''
       fn ${1:function_name}($2) -> $3 {
-        $4
+      \t$4
       }
     '''
   'for':
     'prefix': 'for'
     'body': '''
       for ${1:variable} in ${2:iterator} {
-        $3
+      \t$3
       }
     '''
   'if':
     'prefix': 'if'
     'body': '''
       if ${1:expression} {
-        $2
+      \t$2
       }
     '''
   'impl':
     'prefix': 'impl'
     'body': '''
       impl ${1:TypeName} {
-        $2
+      \t$2
       }
     '''
   'let':
@@ -48,28 +48,28 @@
     'prefix': 'loop'
     'body': '''
       loop {
-        $1
+      \t$1
       }
     '''
   'macro':
     'prefix': 'macro'
     'body': '''
       macro_rules! ${1:macro_name} (
-        ($2) => ($3)
+      \t($2) => ($3)
       )
     '''
   'main':
     'prefix': 'main'
     'body': '''
       fn main() {
-        $1
+      \t$1
       }
     '''
   'match':
     'prefix': 'match'
     'body': '''
       match ${1:expression} {
-        $2
+      \t$2
       }
     '''
   'static':
@@ -79,7 +79,7 @@
     'prefix': 'struct'
     'body': '''
       struct ${1:TypeName} {
-        $2
+      \t$2
       }
     '''
   'test':
@@ -87,7 +87,7 @@
     'body': '''
       #[test]
       fn ${1:test_name}() {
-        $2
+      \t$2
       }
     '''
   'testmod':
@@ -95,17 +95,17 @@
     'body': '''
       #[cfg(test)]
       mod test {
-        #[test]
-        fn ${1:test_name}() {
-          $2
-        }
+      \t#[test]
+      \tfn ${1:test_name}() {
+      \t\t$2
+      \t}
       }
     '''
   'trait':
     'prefix': 'trait'
     'body': '''
       trait ${1:TypeName} {
-        $2
+      \t$2
       }
     '''
   'type':
@@ -115,6 +115,6 @@
     'prefix': 'while'
     'body': '''
       while ${1:expression} {
-        $2
+      \t$2
       }
     '''
