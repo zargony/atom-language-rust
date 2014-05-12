@@ -124,13 +124,9 @@
   }
   # Strings
   {
-    'comment': 'Single-quote string'
+    'comment': 'Single-quote string (character literal)'
     'name': 'string.quoted.single.rust'
-    'begin': '\''
-    'end': '\''
-    'patterns': [
-      { 'include': '#escaped_character' }
-    ]
+    'match': '\'([^\'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))\''
   }
   {
     'comment': 'Double-quote string'
@@ -216,6 +212,7 @@
   { 'include': '#self' }
   { 'include': '#mut' }
   { 'include': '#box' }
+  { 'include': '#lifetime' }
   { 'include': '#ref_lifetime' }
   # Operators
   {
