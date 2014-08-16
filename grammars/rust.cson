@@ -42,7 +42,7 @@
   'sigils': {
     'comment': 'Sigil'
     'name': 'keyword.operator.sigil.rust'
-    'match': '[&~@*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
+    'match': '[&*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
   }
   'string_literal': {
       'comment': 'Double-quote string'
@@ -66,7 +66,7 @@
   'kinds': {
     'comment': 'Built-in trait (kind)'
     'name': 'support.type.kind.rust'
-    'match': '\\b(Send|Sized|Copy|Share)\\b'
+    'match': '\\b(Send|Sized|Copy|Share|Drop|Freeze)\\b'
   }
   'self': {
     'comment': 'Self variable'
@@ -186,7 +186,7 @@
   {
     'comment': 'Visibility modifier'
     'name': 'storage.modifier.visibility.rust'
-    'match': '\\b(priv|pub)\\b'
+    'match': '\\bpub\\b'
   }
   {
     'comment': 'Boolean constant'
@@ -196,12 +196,12 @@
   {
     'comment': 'Control keyword'
     'name': 'keyword.control.rust'
-    'match': '\\b(break|continue|do|else|if|in|for|loop|match|return|while)\\b'
+    'match': '\\b(break|continue|else|if|in|for|loop|match|return|while)\\b'
   }
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use)\\b'
+    'match': '\\b(crate|extern|mod|let|proc|ref|use|super)\\b'
   }
   {
     'comment': 'Unsafe code keyword'
