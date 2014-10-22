@@ -44,14 +44,19 @@
     'name': 'keyword.operator.sigil.rust'
     'match': '[&*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
   }
+  'raw_string_literal': {
+      'comment': 'Raw double-quote string'
+      'name': 'string.quoted.double.raw.rust'
+      'match': 'r(#*)".*?"(\\1)'
+  }
   'string_literal': {
-      'comment': 'Double-quote string'
-      'name': 'string.quoted.double.rust'
-      'begin': '"'
-      'end': '"'
-      'patterns': [
+    'comment': 'Double-quote string'
+    'name': 'string.quoted.double.rust'
+    'begin': '"'
+    'end': '"'
+    'patterns': [
         { 'include': '#escaped_character' }
-      ]
+    ]
   }
   'types': {
     'comment': 'Built-in type'
@@ -196,6 +201,7 @@
     'match': '\'([^\'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))\''
   }
   { 'include': '#string_literal' }
+  { 'include': '#raw_string_literal' }
   # Numbers
   {
     'comment': 'Floating point number (fraction)'

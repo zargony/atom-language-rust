@@ -24,6 +24,11 @@ text #![!resolve_unexported] text
 text #[deny(silly_comments)] text
 #[doc = "This attribute contains ] a attribute ending character"]
 
+text r"This is a raw string" text
+text r"This raw string ends in \" text
+text r#"This is also valid"# text
+text r##"This is ##"# also valid."## text
+
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
 text "string with // comment /* inside" text
