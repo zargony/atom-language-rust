@@ -262,7 +262,7 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|where)\\b'
+    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|where|move)\\b'
   }
   {
     'comment': 'Unsafe code keyword'
