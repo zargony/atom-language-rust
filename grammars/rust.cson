@@ -126,7 +126,7 @@
   'other': {
     'comment': 'Built-in traits (other)'
     'name': 'support.type.other.rust'
-    'match': '\\b(ToCStr|Clone|GenericPath|RawPtr|ToString|IntoStr)\\b'
+    'match': '\\b(Result|Option|ToCStr|Clone|GenericPath|RawPtr|ToString|IntoStr)\\b'
   }
   'self': {
     'comment': 'Self variable'
