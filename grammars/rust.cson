@@ -44,14 +44,19 @@
     'name': 'keyword.operator.sigil.rust'
     'match': '[&*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
   }
+  'raw_string_literal': {
+    'comment': 'Raw double-quote string'
+    'name': 'string.quoted.double.raw.rust'
+    'match': 'r(#*)".*?"(\\1)'
+  }
   'string_literal': {
-      'comment': 'Double-quote string'
-      'name': 'string.quoted.double.rust'
-      'begin': '"'
-      'end': '"'
-      'patterns': [
-        { 'include': '#escaped_character' }
-      ]
+    'comment': 'Double-quote string'
+    'name': 'string.quoted.double.rust'
+    'begin': '"'
+    'end': '"'
+    'patterns': [
+      { 'include': '#escaped_character' }
+    ]
   }
   'types': {
     'comment': 'Built-in type'
@@ -60,13 +65,68 @@
   }
   'std_types': {
     'comment': 'Standard library type'
-    'name': 'support.class.std.rust'
-    'match': '\\b(Box|Vec|StrBuf|Path|Option|Result|Reader|Writer|Stream|Seek|Buffer|IoError|IoResult|Sender|SyncSender|Receiver|Cell|RefCell|Any)\\b'
+    'name': 'storage.class.std.rust'
+    'match': '\\b(Result|Option|Ascii|Box|Path|PosixPath|WindowsPath|String|Vec|SyncSender|Sender|Receiver)\\b'
   }
-  'kinds': {
-    'comment': 'Built-in trait (kind)'
+  'kind': {
+    'comment': 'Built-in traits (kind)'
     'name': 'support.type.kind.rust'
-    'match': '\\b(Send|Sync|Sized|Copy|Share|Drop|Freeze)\\b'
+    'match': '\\b(Copy|Send|Sized|Sync)\\b'
+  }
+  'ops': {
+    'comment': 'Built-in traits (ops)'
+    'name': 'support.type.ops.rust'
+    'match': '\\b(Add|Sub|Mul|Div|Rem|Neg|Not|BitAnd|BitOr|BitXor|Drop|Deref|DerefMut|Shl|Shr|Index|IndexMut|Slice|SliceMut|Fn|FnMut|FnOnce)\\b'
+  }
+  'ascii': {
+    'comment': 'Built-in traits (ascii)'
+    'name': 'support.type.ascii.rust'
+    'match': '\\b(AsciiCast|OwnedAsciiCast|AsciiStr|IntoBytes)\\b'
+  }
+  'cmp': {
+    'comment': 'Built-in traits (cmp)'
+    'name': 'support.type.cmp.rust'
+    'match': '\\b(PartialEq|PartialOrd|Eq|Ord|Equiv)\\b'
+  }
+  'collections': {
+    'comment': 'Built-in traits (collections)'
+    'name': 'support.type.collections.rust'
+    'match': '\\b(Collection|Mutable|Map|MutableMap|MutableSeq|Set|MutableSet)\\b'
+  }
+  'iter': {
+    'comment': 'Built-in traits (iter)'
+    'name': 'support.type.iter.rust'
+    'match': '\\b(FromIterator|Extendable|ExactSize|Iterator|DoubleEndedIterator|RandomAccessIterator|CloneableIterator|OrdIterator|MutableDoubleEndedIterator)\\b'
+  }
+  'num': {
+    'comment': 'Built-in traits (num)'
+    'name': 'support.type.num.rust'
+    'match': '\\b(Num|NumCast|CheckedAdd|CheckedSub|CheckedMul|CheckedDiv|Signed|Unsigned|Primitive|Int|Float|FloatMath|ToPrimitive|FromPrimitive)\\b'
+  }
+  'io': {
+    'comment': 'Built-in traits (io)'
+    'name': 'support.type.io.rust'
+    'match': '\\b(Buffer|Writer|Reader|Seek)\\b'
+  }
+  'str': {
+    'comment': 'Built-in traits (str)'
+    'name': 'support.type.str.rust'
+    'match': '\\b(Str|StrVector|StrSlice|IntoMaybeOwned|StrAllocating|UnicodeStrSlice)\\b'
+  }
+  'tuple': {
+    'comment': 'Built-in traits (tuple)'
+    'name': 'support.type.tuple.rust'
+    'match': '\\b(Tuple1|Tuple2|Tuple3|Tuple4|Tuple5|Tuple6|Tuple7|Tuple8|Tuple9|Tuple10|Tuple11|Tuple12)\\b'
+  }
+  'slice': {
+    'comment': 'Built-in traits (slice)'
+    'name': 'support.type.slice.rust'
+    'match': '\\b(CloneableVector|ImmutableCloneableVector|MutableCloneableSlice|MutableOrdSlice|ImmutableSlice|MutableSlice|ImmutablePartialEqSlice|ImmutableOrdSlice|AsSlice|VectorVector|BoxedSlice|MutableSliceAllocating)\\b'
+  }
+  'other': {
+    'comment': 'Built-in traits (other)'
+    'name': 'support.type.other.rust'
+    'match': '\\b(ToCStr|Clone|GenericPath|RawPtr|ToString|IntoStr)\\b'
   }
   'self': {
     'comment': 'Self variable'
@@ -141,6 +201,7 @@
     'match': '\'([^\'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))\''
   }
   { 'include': '#string_literal' }
+  { 'include': '#raw_string_literal' }
   # Numbers
   {
     'comment': 'Floating point number (fraction)'
@@ -201,7 +262,7 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super)\\b'
+    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|where|move)\\b'
   }
   {
     'comment': 'Unsafe code keyword'
@@ -212,7 +273,18 @@
   { 'include': '#sigils' }
   { 'include': '#types' }
   { 'include': '#std_types' }
-  { 'include': '#kinds' }
+  { 'include': '#kind' }
+  { 'include': '#ops' }
+  { 'include': '#ascii' }
+  { 'include': '#cmp' }
+  { 'include': '#collections' }
+  { 'include': '#iter' }
+  { 'include': '#num' }
+  { 'include': '#io' }
+  { 'include': '#str' }
+  { 'include': '#tuple' }
+  { 'include': '#slice' }
+  { 'include': '#other' }
   { 'include': '#self' }
   { 'include': '#mut' }
   { 'include': '#box' }
