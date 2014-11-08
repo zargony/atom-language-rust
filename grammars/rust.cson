@@ -301,7 +301,7 @@
   {
     'comment': 'Standard library macro'
     'name': 'support.function.std.rust'
-    'match': '\\b(log|error|warn|info|debug|log_enabled|fail|assert|assert_eq|unreachable|unimplemented|format|write|writeln|print|println|local_data_key|try|vec|select)!'
+    'match': '\\b(log|error|warn|info|debug|log_enabled|panic|assert|assert_eq|unreachable|unimplemented|format|write|writeln|print|println|local_data_key|try|vec|select)!'
   }
   {
     'comment': 'Standard library type variant'
