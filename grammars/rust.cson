@@ -28,12 +28,14 @@
   'line_doc_comment': {
     'comment': 'Single-line documentation comment'
     'name': 'comment.line.documentation.rust'
-    'match': '//[!/][^/].*$'
+    'begin': '//[!/][^/]'
+    'end': '$'
   }
   'line_comment': {
     'comment': 'Single-line comment'
     'name': 'comment.line.double-slash.rust'
-    'match': '//.*$'
+    'begin': '//'
+    'end': '$'
   }
   'escaped_character': {
     'name': 'constant.character.escape.rust'
