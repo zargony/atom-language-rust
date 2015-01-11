@@ -39,6 +39,8 @@ text '\x20' text
 text '\'' text
 
 text 42f32 text
+text 42is text
+text 42i32 text
 text 42e+18 text
 text 42.1415 text
 
