@@ -16,7 +16,7 @@
   'fnr':
     'prefix': 'fnr'
     'body': '''
-      fn ${1:function_name}($2) -> $3 {
+      fn ${1:function_name}($2) -> ${3:TypeName} {
       \t$4
       }
     '''
@@ -54,9 +54,9 @@
   'macro':
     'prefix': 'macro'
     'body': '''
-      macro_rules! ${1:macro_name} (
-      \t($2) => ($3)
-      )
+      macro_rules! ${1:macro_name} {
+      \t($2) => ($3);
+      }
     '''
   'main':
     'prefix': 'main'
