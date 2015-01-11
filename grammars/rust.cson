@@ -63,7 +63,7 @@
   'types': {
     'comment': 'Built-in type'
     'name': 'storage.type.rust'
-    'match': '\\b(bool|char|uint|int|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self)\\b'
+    'match': '\\b(bool|char|usize|isize|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self)\\b'
   }
   'std_types': {
     'comment': 'Standard library type'
