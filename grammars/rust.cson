@@ -28,7 +28,7 @@
   'line_doc_comment': {
     'comment': 'Single-line documentation comment'
     'name': 'comment.line.documentation.rust'
-    'begin': '//[!/][^/]'
+    'begin': '//[!/](?=[^/])'
     'end': '$'
   }
   'line_comment': {
