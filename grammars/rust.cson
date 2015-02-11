@@ -41,16 +41,6 @@
     'name': 'constant.character.escape.rust'
     'match': '\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
   }
-  'sigils': {
-    'comment': 'Sigil'
-    'name': 'keyword.operator.sigil.rust'
-    'match': '[&*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
-  }
-  'raw_string_literal': {
-    'comment': 'Raw double-quote string literal'
-    'name': 'string.quoted.double.raw.rust'
-    'match': 'b?r(#*)".*?"(\\1)'
-  }
   'string_literal': {
     'comment': 'Double-quote string literal'
     'name': 'string.quoted.double.rust'
@@ -60,75 +50,15 @@
       { 'include': '#escaped_character' }
     ]
   }
-  'types': {
-    'comment': 'Built-in type'
-    'name': 'storage.type.rust'
-    'match': '\\b(bool|char|usize|isize|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self)\\b'
+  'raw_string_literal': {
+    'comment': 'Raw double-quote string literal'
+    'name': 'string.quoted.double.raw.rust'
+    'match': 'b?r(#*)".*?"(\\1)'
   }
-  'std_types': {
-    'comment': 'Standard library type'
-    'name': 'storage.class.std.rust'
-    'match': '\\b(Result|Option|Ascii|Box|Path|PosixPath|WindowsPath|String|Vec|SyncSender|Sender|Receiver)\\b'
-  }
-  'kinds': {
-    'comment': 'Built-in trait (kind)'
-    'name': 'support.type.kind.rust'
-    'match': '\\b(Copy|Send|Sized|Sync)\\b'
-  }
-  'ops': {
-    'comment': 'Built-in trait (op)'
-    'name': 'support.type.ops.rust'
-    'match': '\\b(Add|Sub|Mul|Div|Rem|Neg|Not|BitAnd|BitOr|BitXor|Drop|Deref|DerefMut|Shl|Shr|Index|IndexMut|Slice|SliceMut|Fn|FnMut|FnOnce)\\b'
-  }
-  'ascii': {
-    'comment': 'Built-in trait (ascii)'
-    'name': 'support.type.ascii.rust'
-    'match': '\\b(AsciiCast|OwnedAsciiCast|AsciiStr|IntoBytes)\\b'
-  }
-  'cmp': {
-    'comment': 'Built-in trait (cmp)'
-    'name': 'support.type.cmp.rust'
-    'match': '\\b(PartialEq|PartialOrd|Eq|Ord|Equiv)\\b'
-  }
-  'collections': {
-    'comment': 'Built-in traits (collections)'
-    'name': 'support.type.collections.rust'
-    'match': '\\b(Collection|Mutable|Map|MutableMap|MutableSeq|Set|MutableSet)\\b'
-  }
-  'iter': {
-    'comment': 'Built-in traits (iter)'
-    'name': 'support.type.iter.rust'
-    'match': '\\b(FromIterator|Extendable|ExactSize|Iterator|DoubleEndedIterator|RandomAccessIterator|CloneableIterator|OrdIterator|MutableDoubleEndedIterator)\\b'
-  }
-  'num': {
-    'comment': 'Built-in traits (num)'
-    'name': 'support.type.num.rust'
-    'match': '\\b(Num|NumCast|CheckedAdd|CheckedSub|CheckedMul|CheckedDiv|Signed|Unsigned|Primitive|Int|Float|FloatMath|ToPrimitive|FromPrimitive)\\b'
-  }
-  'io': {
-    'comment': 'Built-in traits (io)'
-    'name': 'support.type.io.rust'
-    'match': '\\b(Buffer|Writer|Reader|Seek)\\b'
-  }
-  'str': {
-    'comment': 'Built-in traits (str)'
-    'name': 'support.type.str.rust'
-    'match': '\\b(Str|StrVector|StrSlice|IntoMaybeOwned|StrAllocating|UnicodeStrSlice)\\b'
-  }
-  'tuple': {
-    'comment': 'Built-in traits (tuple)'
-    'name': 'support.type.tuple.rust'
-    'match': '\\b(Tuple1|Tuple2|Tuple3|Tuple4|Tuple5|Tuple6|Tuple7|Tuple8|Tuple9|Tuple10|Tuple11|Tuple12)\\b'
-  }
-  'slice': {
-    'comment': 'Built-in traits (slice)'
-    'name': 'support.type.slice.rust'
-    'match': '\\b(CloneableVector|ImmutableCloneableVector|MutableCloneableSlice|MutableOrdSlice|ImmutableSlice|MutableSlice|ImmutablePartialEqSlice|ImmutableOrdSlice|AsSlice|VectorVector|BoxedSlice|MutableSliceAllocating)\\b'
-  }
-  'other': {
-    'comment': 'Built-in traits (other)'
-    'name': 'support.type.other.rust'
-    'match': '\\b(ToCStr|Clone|GenericPath|RawPtr|ToString|IntoStr)\\b'
+  'sigils': {
+    'comment': 'Sigil'
+    'name': 'keyword.operator.sigil.rust'
+    'match': '[&*](?=[a-zA-Z0-9_\\(\\[\\|\\"]+)'
   }
   'self': {
     'comment': 'Self variable'
@@ -161,6 +91,36 @@
       '2': { 'name': 'entity.name.lifetime.rust' }
     }
   }
+  'types': {
+    'comment': 'Built-in type'
+    'name': 'storage.type.rust'
+    'match': '\\b(bool|char|usize|isize|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self)\\b'
+  }
+  'marker': {
+    'comment': 'Core trait (marker)'
+    'name': 'support.type.marker.rust'
+    'match': '\\b(Copy|Send|Sized|Sync)\\b'
+  }
+  'ops': {
+    'comment': 'Core trait (op)'
+    'name': 'support.type.ops.rust'
+    'match': '\\b(Drop|Fn|FnMut|FnOnce)\\b'
+  }
+  'std_types': {
+    'comment': 'Standard library type'
+    'name': 'storage.class.std.rust'
+    'match': '\\b(Box|Option|Path|PathBuf|Result|String|Vec)\\b'
+  }
+  'std_vars': {
+    'comment': 'Standard library type variant'
+    'name': 'support.constant.std.rust'
+    'match': '\\b(Some|None|Ok|Err)\\b'
+  }
+  'std_traits': {
+    'comment': 'Standard library trait'
+    'name': 'support.type.std.rust'
+    'match': '\\b(Clone|PartialEq|PartialOrd|Eq|Ord|Read|Write|Seek|BufRead|DoubleEndedIterator|ExactSizeIterator|Iterator|Extend|AsPath|AsSlice|Str|ToString)\\b'
+  }
   'type_params': {
     'comment': 'Type parameters'
     'name': 'meta.type_params.rust'
@@ -170,11 +130,12 @@
       { 'include': '#block_comment' }
       { 'include': '#line_comment' }
       { 'include': '#sigils' }
-      { 'include': '#types' }
-      { 'include': '#std_types' }
-      { 'include': '#kinds' }
       { 'include': '#mut' }
       { 'include': '#lifetime' }
+      { 'include': '#types' }
+      { 'include': '#marker' }
+      { 'include': '#ops' }
+      { 'include': '#std_traits' }
       { 'include': '#type_params' }
     ]
   }
@@ -271,22 +232,7 @@
     'name': 'keyword.other.unsafe.rust'
     'match': '\\bunsafe\\b'
   }
-  # TODO: _
   { 'include': '#sigils' }
-  { 'include': '#types' }
-  { 'include': '#std_types' }
-  { 'include': '#kinds' }
-  { 'include': '#ops' }
-  { 'include': '#ascii' }
-  { 'include': '#cmp' }
-  { 'include': '#collections' }
-  { 'include': '#iter' }
-  { 'include': '#num' }
-  { 'include': '#io' }
-  { 'include': '#str' }
-  { 'include': '#tuple' }
-  { 'include': '#slice' }
-  { 'include': '#other' }
   { 'include': '#self' }
   { 'include': '#mut' }
   { 'include': '#box' }
@@ -298,17 +244,34 @@
     'name': 'keyword.operator.rust'
     'match': '(\\+|-|/|\\*|=|\\^|&|\\||!|>|<|%|::|\\bas\\b)'
   }
+  # Standard types and traits
+  { 'include': '#types' }
+  { 'include': '#marker' }
+  { 'include': '#ops' }
+  { 'include': '#std_types' }
+  { 'include': '#std_vars' }
+  { 'include': '#std_traits' }
   # TODO: procs and closures
-  # Standard library
+  # Macros
+  {
+    'comment': 'Built-in macro'
+    'name': 'support.function.builtin.rust'
+    'match': '\\b(macro_rules|format_args|env|option_env|concat_idents|concat|log_syntax|line|column|file|stringify|include|include_str|include_bytes|module_path|asm|cfg|trace_macros)!'
+  }
+  {
+    'comment': 'Core macro'
+    'name': 'support.function.core.rust'
+    'match': '\\b(panic|assert|assert_eq|debug_assert|debug_assert_eq|try|write|writeln|unreachable|unimplemented)!'
+  }
   {
     'comment': 'Standard library macro'
     'name': 'support.function.std.rust'
-    'match': '\\b(log|error|warn|info|debug|log_enabled|panic|assert|assert_eq|unreachable|unimplemented|format|write|writeln|print|println|local_data_key|try|vec|select)!'
+    'match': '\\b(format|print|println|select|vec)!'
   }
   {
-    'comment': 'Standard library type variant'
-    'name': 'support.constant.std.rust'
-    'match': '\\b(Some|None|Ok|Err)\\b'
+    'comment': 'Logging macro'
+    'name': 'support.function.log.rust'
+    'match': '\\b(log|error|warn|info|debug|trace|log_enabled)!'
   }
   # Function and macro calls
   {
