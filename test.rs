@@ -28,6 +28,9 @@ text r"This is a raw string" text
 text r"This raw string ends in \" text
 text r#"This is also valid"# text
 text r##"This is ##"# also valid."## text
+test b"This is a bytestring" text
+test br"And a raw byte string" text
+text br##"This is ##"# also valid."## text
 
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
@@ -37,6 +40,8 @@ text 'c' text
 text '\n' text
 text '\x20' text
 text '\'' text
+text b'b' text
+text b'\x20' text
 
 text 42f32 text
 text 42is text
