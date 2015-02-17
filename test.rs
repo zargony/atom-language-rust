@@ -12,6 +12,10 @@ text
 block */ doc comment */
 text
 
+text /**/ text
+text /***/ text
+text /****/ text
+
 text
 text // line comment
 text /// line doc comment
