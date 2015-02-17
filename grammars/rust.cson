@@ -208,6 +208,11 @@
     'match': '\\bstatic\\b'
   }
   {
+    'comment': 'Const storage modifier'
+    'name': 'storage.modifier.const.rust'
+    'match': '\\bconst\\b'
+  }
+  {
     'comment': 'Visibility modifier'
     'name': 'storage.modifier.visibility.rust'
     'match': '\\bpub\\b'
