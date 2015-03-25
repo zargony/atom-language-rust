@@ -184,22 +184,22 @@
   {
     'comment': 'Integer literal (decimal)'
     'name': 'constant.numeric.integer.decimal.rust'
-    'match': '\\b[0-9][0-9_]*([ui](8|16|32|64|s))?\\b'
+    'match': '\\b[0-9][0-9_]*([ui](8|16|32|64|s|size))?\\b'
   }
   {
     'comment': 'Integer literal (hexadecimal)'
     'name': 'constant.numeric.integer.hexadecimal.rust'
-    'match': '\\b0x[a-fA-F0-9_]+([ui](8|16|32|64|s))?\\b'
+    'match': '\\b0x[a-fA-F0-9_]+([ui](8|16|32|64|s|size))?\\b'
   }
   {
     'comment': 'Integer literal (octal)'
     'name': 'constant.numeric.integer.octal.rust'
-    'match': '\\b0o[0-7_]+([ui](8|16|32|64|s))?\\b'
+    'match': '\\b0o[0-7_]+([ui](8|16|32|64|s|size))?\\b'
   }
   {
     'comment': 'Integer literal (binary)'
     'name': 'constant.numeric.integer.binary.rust'
-    'match': '\\b0b[01_]+([ui](8|16|32|64|s))?\\b'
+    'match': '\\b0b[01_]+([ui](8|16|32|64|s|size))?\\b'
   }
   # Language
   {
