@@ -4,7 +4,7 @@
   "description": "Rust language support in Atom",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">0.50.0 <2.0.0"
   },
   "dependencies": {},
   "homepage": "https://github.com/zargony/atom-language-rust",
