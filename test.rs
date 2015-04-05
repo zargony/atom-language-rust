@@ -182,6 +182,8 @@ impl MyStruct<'foo> {
 }
 text
 
+let x = 123usize;
+
 'infinity: loop {
     do_serious_stuff();
     use_a_letter('Z');
