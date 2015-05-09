@@ -169,17 +169,17 @@
   {
     'comment': 'Floating point literal (fraction)'
     'name': 'constant.numeric.float.rust'
-    'match': '\\b[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-][0-9_]+)?(f32|f64)?\\b'
+    'match': '\\b[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-]?[0-9_]+)?(f32|f64)?\\b'
   }
   {
     'comment': 'Floating point literal (exponent)'
     'name': 'constant.numeric.float.rust'
-    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?[eE][+-][0-9_]+(f32|f64)?\\b'
+    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?[eE][+-]?[0-9_]+(f32|f64)?\\b'
   }
   {
     'comment': 'Floating point literal (typed)'
     'name': 'constant.numeric.float.rust'
-    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-][0-9_]+)?(f32|f64)\\b'
+    'match': '\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?(f32|f64)\\b'
   }
   {
     'comment': 'Integer literal (decimal)'
