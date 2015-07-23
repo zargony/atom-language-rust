@@ -137,6 +137,7 @@
       { 'include': '#ops' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      { 'include': '#std_types' }
     ]
   }
 }
