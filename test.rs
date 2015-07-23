@@ -26,7 +26,7 @@ text #![main] text
 text #![allow(great_algorithms)] text
 text #![!resolve_unexported] text
 text #[deny(silly_comments)] text
-#[doc = "This attribute contains ] a attribute ending character"]
+#[doc = "This attribute contains ] an attribute ending character"]
 
 text r"This is a raw string" text
 text r"This raw string ends in \" text
@@ -52,6 +52,8 @@ text 42is text
 text 42i32 text
 text 42e+18 text
 text 42.1415 text
+text 42.1415e18 text
+text 42.1415e+18 text
 
 text 42 text
 text 0xf00b text
@@ -182,10 +184,18 @@ impl MyStruct<'foo> {
 }
 text
 
-let x = 123usize;
-
+// Loop expression labels (#2)
 'infinity: loop {
     do_serious_stuff();
     use_a_letter('Z');
     break 'infinity;
 }
+
+// isize/usize suffixes (#22)
+let x = 123usize;
+
+// Float literals without +- after E (#30)
+let x = 1.2345e6;
+
+// Nested generic (#33, #37)
+let x: Vec<Vec<u8>> = Vec::new();
