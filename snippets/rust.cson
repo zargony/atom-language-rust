@@ -10,14 +10,14 @@
     'prefix': 'fn'
     'body': '''
       fn ${1:function_name}($2) {
-      \t$3
+      \t${3:unimplemented!()}
       }
     '''
   'fnr':
     'prefix': 'fnr'
     'body': '''
       fn ${1:function_name}($2) -> ${3:TypeName} {
-      \t$4
+      \t${4:unimplemented!()}
       }
     '''
   'for':
@@ -62,7 +62,7 @@
     'prefix': 'main'
     'body': '''
       fn main() {
-      \t$1
+      \t${1:unimplemented!()}
       }
     '''
   'match':
@@ -87,7 +87,7 @@
     'body': '''
       #[test]
       fn ${1:test_name}() {
-      \t$2
+      \t${2:unimplemented!()}
       }
     '''
   'testmod':
@@ -97,7 +97,7 @@
       mod test {
       \t#[test]
       \tfn ${1:test_name}() {
-      \t\t$2
+      \t\t${2:unimplemented!()}
       \t}
       }
     '''
