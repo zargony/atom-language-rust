@@ -72,6 +72,12 @@
       \t$2
       }
     '''
+  'print':
+    'prefix': 'print'
+    'body': 'print!("${1:{${2::?}\\}}", ${3});'
+  'println':
+    'prefix': 'println'
+    'body': 'println!("${1:{${2::?}\\}}", ${3});'
   'static':
     'prefix': 'static'
     'body': 'static ${1:CONSTANT}: ${2:TypeName} = ${3:value};'
