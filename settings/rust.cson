@@ -2,5 +2,5 @@
   'editor':
     'commentStart': '// '
     'tabLength': 4
-    'softTab': true
+    'softTabs': true
     'preferredLineLength': 99
