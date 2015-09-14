@@ -384,6 +384,10 @@
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      {
+        'name': 'storage.type.rust'
+        'match': '\\bfor\\b'
+      }
     ]
   }
 ]
