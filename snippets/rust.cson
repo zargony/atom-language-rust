@@ -100,7 +100,9 @@
     'prefix': 'testmod'
     'body': '''
       #[cfg(test)]
-      mod test {
+      mod tests {
+      \tuse super::*;
+
       \t#[test]
       \tfn ${1:test_name}() {
       \t\t${2:unimplemented!()}
