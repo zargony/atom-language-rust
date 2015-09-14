@@ -53,7 +53,8 @@
   'raw_string_literal': {
     'comment': 'Raw double-quote string literal'
     'name': 'string.quoted.double.raw.rust'
-    'match': 'b?r(#*)".*?"(\\1)'
+    'begin': 'b?r(#*)"'
+    'end': '"\\1'
   }
   'sigils': {
     'comment': 'Sigil'

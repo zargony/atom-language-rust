@@ -35,10 +35,14 @@ text r##"This is ##"# also valid."## text
 test b"This is a bytestring" text
 test br"And a raw byte string" text
 text br##"This is ##"# also valid."## text
+text r##"Raw strings can
+span multiple lines"## text
 
 text "double-quote string" text
 text "string\nwith\x20escaped\"characters" text
 text "string with // comment /* inside" text
+text "strings can
+span multiple lines" text
 
 text 'c' text
 text '\n' text
