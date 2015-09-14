@@ -91,17 +91,17 @@
       '2': { 'name': 'entity.name.lifetime.rust' }
     }
   }
-  'types': {
+  'core_types': {
     'comment': 'Built-in/core type'
     'name': 'storage.type.core.rust'
     'match': '\\b(bool|char|usize|isize|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|Self|Option|Result)\\b'
   }
-  'vars': {
+  'core_vars': {
     'comment': 'Core type variant'
     'name': 'support.constant.core.rust'
     'match': '\\b(Some|None|Ok|Err)\\b'
   }
-  'marker': {
+  'core_marker': {
     'comment': 'Core trait (marker)'
     'name': 'support.type.marker.rust'
     'match': '\\b(Copy|Send|Sized|Sync)\\b'
@@ -137,8 +137,8 @@
       { 'include': '#sigils' }
       { 'include': '#mut' }
       { 'include': '#lifetime' }
-      { 'include': '#types' }
-      { 'include': '#marker' }
+      { 'include': '#core_types' }
+      { 'include': '#core_marker' }
       { 'include': '#traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
@@ -256,9 +256,9 @@
     'match': '(\\+|-|/|\\*|=|<=|>=|\\^|&|\\||!|%|::|\\bas\\b|<<|>>|>|<)'
   }
   # Standard types and traits
-  { 'include': '#types' }
-  { 'include': '#vars' }
-  { 'include': '#marker' }
+  { 'include': '#core_types' }
+  { 'include': '#core_vars' }
+  { 'include': '#core_marker' }
   { 'include': '#traits' }
   { 'include': '#std_types' }
   { 'include': '#std_vars' }
@@ -316,8 +316,8 @@
       { 'include': '#self' }
       { 'include': '#mut' }
       { 'include': '#ref_lifetime' }
-      { 'include': '#types' }
-      { 'include': '#marker' }
+      { 'include': '#core_types' }
+      { 'include': '#core_marker' }
       { 'include': '#traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
@@ -356,8 +356,8 @@
       { 'include': '#sigils' }
       { 'include': '#mut' }
       { 'include': '#ref_lifetime' }
-      { 'include': '#types' }
-      { 'include': '#marker' }
+      { 'include': '#core_types' }
+      { 'include': '#core_marker' }
       { 'include': '#traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
@@ -378,8 +378,8 @@
       { 'include': '#sigils' }
       { 'include': '#mut' }
       { 'include': '#ref_lifetime' }
-      { 'include': '#types' }
-      { 'include': '#marker' }
+      { 'include': '#core_types' }
+      { 'include': '#core_marker' }
       { 'include': '#traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
