@@ -93,18 +93,18 @@ text
 
 text
 pub struct MyStruct<'foo> {
-    priv one: uint,
+    pub one: u32,
     two: Option<'a, MyEnum>,
-    three: &'foo int,
+    three: &'foo i32,
 }
 text
 
 text
-type MyType = uint;
+type MyType = u32;
 text
 
 text
-static MY_CONSTANT: ~str = ~"hello";
+static MY_CONSTANT: &str = "hello";
 text
 
 text
@@ -160,7 +160,7 @@ impl<'foo> MyTrait for MyStruct<'foo> {
     text
     fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U {
         text
-        let foo: Option<'a uint> = Some(18);
+        let foo: Option<'a u32> = Some(18);
         text
         if self.one < 1 {
             text
@@ -175,7 +175,7 @@ text
 text
 impl MyStruct<'foo> {
     text
-    pub fn with_something<T: Send> (param: &T, f: |int, &str| -> T, other_param: u32) -> T {
+    pub fn with_something<T: Send> (param: &T, f: |i32, &str| -> T, other_param: u32) -> T {
         text
         f(123, "hello")
         text
@@ -199,3 +199,7 @@ let x = 1.2345e6;
 
 // Nested generic (#33, #37)
 let x: Vec<Vec<u8>> = Vec::new();
+
+// Correct detection of == (#40)
+struct Foo { x: i32 }
+if x == 1 { }
