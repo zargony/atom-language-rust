@@ -126,3 +126,12 @@
       \t$2
       }
     '''
+  'derive':
+    'prefix': 'derive'
+    'body': '#[derive(${1:trait})]'
+  'allow':
+    'prefix': 'allow'
+    'body': '#[allow(${1:lint})]'
+  'allow!':
+    'prefix': 'allow!'
+    'body': '#![allow(${1:lint})]'
