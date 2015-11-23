@@ -252,9 +252,29 @@
   { 'include': '#ref_lifetime' }
   # Operators
   {
-    'comment': 'Operator'
-    'name': 'keyword.operator.rust'
-    'match': '(\\+|-|/|\\*|=|<=|>=|\\^|&|\\||!|%|::|\\bas\\b|<<|>>|>|<)'
+    'comment': 'Miscellaneous operator'
+    'name': 'keyword.operator.misc.rust'
+    'match': '(=>|::|\\bas\\b)'
+  }
+  {
+    'comment': 'Comparison operator'
+    'name': 'keyword.operator.comparison.rust'
+    'match': '(&&|\\|\\||==|!=)'
+  }
+  {
+    'comment': 'Assignment operator'
+    'name': 'keyword.operator.assignment.rust'
+    'match': '(\\+=|-=|/=|\\*=|%=|\\^=|&=|\\|=|<<=|>>=|=)'
+  }
+  {
+    'comment': 'Arithmetic operator'
+    'name': 'keyword.operator.arithmetic.rust'
+    'match': '(!|\\+|-|/|\\*|%|\\^|&|\\||<<|>>)'
+  }
+  {
+    'comment': 'Comparison operator (second group because of regex precedence)'
+    'name': 'keyword.operator.comparison.rust'
+    'match': '(<=|>=|<|>)'
   }
   # Standard types and traits
   { 'include': '#core_types' }
