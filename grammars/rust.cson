@@ -76,6 +76,11 @@
     'name': 'storage.modifier.box.rust'
     'match': '\\bbox\\b'
   }
+  'const': {
+    'comment': 'Const storage modifier'
+    'name': 'storage.modifier.const.rust'
+    'match': '\\bconst\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -215,11 +220,6 @@
     'match': '\\bstatic\\b'
   }
   {
-    'comment': 'Const storage modifier'
-    'name': 'storage.modifier.const.rust'
-    'match': '\\bconst\\b'
-  }
-  {
     'comment': 'Visibility modifier'
     'name': 'storage.modifier.visibility.rust'
     'match': '\\bpub\\b'
@@ -250,6 +250,7 @@
   { 'include': '#box' }
   { 'include': '#lifetime' }
   { 'include': '#ref_lifetime' }
+  { 'include': '#const' }
   # Operators
   {
     'comment': 'Operator'
@@ -323,6 +324,7 @@
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      { 'include': '#const' }
     ]
   }
   # Type declaration
