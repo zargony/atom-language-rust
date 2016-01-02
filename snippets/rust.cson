@@ -1,4 +1,19 @@
 '.source.rust':
+  'allow':
+    'prefix': 'allow'
+    'body': '#[allow(${1:lint})]'
+  'allow!':
+    'prefix': 'allow!'
+    'body': '#![allow(${1:lint})]'
+  'deny':
+    'prefix': 'deny'
+    'body': '#[deny(${1:lint})]'
+  'deny!':
+    'prefix': 'deny!'
+    'body': '#![deny(${1:lint})]'
+  'derive':
+    'prefix': 'derive'
+    'body': '#[derive(${1:Trait})]'
   'enum':
     'prefix': 'enum'
     'body': '''
@@ -119,6 +134,12 @@
   'type':
     'prefix': 'type'
     'body': 'type ${1:TypeName} = ${2:TypeName};'
+  'warn':
+    'prefix': 'warn'
+    'body': '#[warn(${1:lint})]'
+  'warn!':
+    'prefix': 'warn!'
+    'body': '#![warn(${1:lint})]'
   'while':
     'prefix': 'while'
     'body': '''
@@ -126,12 +147,3 @@
       \t$2
       }
     '''
-  'derive':
-    'prefix': 'derive'
-    'body': '#[derive(${1:trait})]'
-  'allow':
-    'prefix': 'allow'
-    'body': '#[allow(${1:lint})]'
-  'allow!':
-    'prefix': 'allow!'
-    'body': '#![allow(${1:lint})]'
