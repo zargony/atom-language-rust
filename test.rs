@@ -207,3 +207,11 @@ let x: Vec<Vec<u8>> = Vec::new();
 // Correct detection of == (#40)
 struct Foo { x: i32 }
 if x == 1 { }
+
+// const function parameter (#52)
+fn foo(bar: *const i32) {
+    let _ = 1234 as *const u32;
+}
+
+// Keywords and known types in wrapper structs (#56)
+pub struct Foobar(pub Option<bool>);

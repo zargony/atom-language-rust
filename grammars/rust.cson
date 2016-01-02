@@ -76,6 +76,16 @@
     'name': 'storage.modifier.box.rust'
     'match': '\\bbox\\b'
   }
+  'const': {
+    'comment': 'Const storage modifier'
+    'name': 'storage.modifier.const.rust'
+    'match': '\\bconst\\b'
+  }
+  'pub': {
+    'comment': 'Visibility modifier'
+    'name': 'storage.modifier.visibility.rust'
+    'match': '\\bpub\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -210,16 +220,6 @@
     'match': '\\bstatic\\b'
   }
   {
-    'comment': 'Const storage modifier'
-    'name': 'storage.modifier.const.rust'
-    'match': '\\bconst\\b'
-  }
-  {
-    'comment': 'Visibility modifier'
-    'name': 'storage.modifier.visibility.rust'
-    'match': '\\bpub\\b'
-  }
-  {
     'comment': 'Boolean constant'
     'name': 'constant.language.boolean.rust'
     'match': '\\b(true|false)\\b'
@@ -245,6 +245,8 @@
   { 'include': '#box' }
   { 'include': '#lifetime' }
   { 'include': '#ref_lifetime' }
+  { 'include': '#const' }
+  { 'include': '#pub' }
   # Operators
   {
     'comment': 'Operator'
@@ -317,6 +319,7 @@
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      { 'include': '#const' }
     ]
   }
   # Type declaration
@@ -334,6 +337,8 @@
       { 'include': '#core_traits' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      { 'include': '#core_types' }
+      { 'include': '#pub' }
     ]
   }
   # Type alias
