@@ -107,10 +107,10 @@
     'name': 'support.type.marker.rust'
     'match': '\\b(Copy|Send|Sized|Sync)\\b'
   }
-  'traits': {
+  'core_traits': {
     'comment': 'Core trait'
     'name': 'support.type.core.rust'
-    'match': '\\b(Drop|Fn|FnMut|FnOnce|Clone|PartialEq|PartialOrd|Eq|Ord|AsRef|AsMut|Into|From|Default|IntoIterator|Iterator|DoubleEndedIterator|Extend|ExactSizeIterator)\\b'
+    'match': '\\b(Drop|Fn|FnMut|FnOnce|Clone|PartialEq|PartialOrd|Eq|Ord|AsRef|AsMut|Into|From|Default|Iterator|Extend|IntoIterator|DoubleEndedIterator|ExactSizeIterator)\\b'
   }
   'std_types': {
     'comment': 'Standard library type'
@@ -140,7 +140,7 @@
       { 'include': '#lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
-      { 'include': '#traits' }
+      { 'include': '#core_traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
@@ -260,7 +260,7 @@
   { 'include': '#core_types' }
   { 'include': '#core_vars' }
   { 'include': '#core_marker' }
-  { 'include': '#traits' }
+  { 'include': '#core_traits' }
   { 'include': '#std_types' }
   { 'include': '#std_vars' }
   { 'include': '#std_traits' }
@@ -319,7 +319,7 @@
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
-      { 'include': '#traits' }
+      { 'include': '#core_traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
@@ -337,7 +337,7 @@
     'patterns': [
       { 'include': '#block_comment' }
       { 'include': '#line_comment' }
-      { 'include': '#traits' }
+      { 'include': '#core_traits' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
     ]
@@ -359,7 +359,7 @@
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
-      { 'include': '#traits' }
+      { 'include': '#core_traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
@@ -381,7 +381,7 @@
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
-      { 'include': '#traits' }
+      { 'include': '#core_traits' }
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
