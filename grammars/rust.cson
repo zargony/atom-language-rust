@@ -117,11 +117,6 @@
     'name': 'storage.class.std.rust'
     'match': '\\b(Box|String|Vec|Path|PathBuf)\\b'
   }
-  'std_vars': {
-    'comment': 'Standard library type variant'
-    'name': 'support.constant.std.rust'
-    'match': '\\b(Some|None|Ok|Err)\\b'
-  }
   'std_traits': {
     'comment': 'Standard library trait'
     'name': 'support.type.std.rust'
@@ -262,7 +257,6 @@
   { 'include': '#core_marker' }
   { 'include': '#core_traits' }
   { 'include': '#std_types' }
-  { 'include': '#std_vars' }
   { 'include': '#std_traits' }
   # TODO: procs and closures
   # Macros
