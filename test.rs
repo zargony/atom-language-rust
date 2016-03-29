@@ -94,13 +94,13 @@ pub enum MyEnum {
     Two
 }
 text
-
-text
 pub struct MyStruct<'foo> {
     pub one: u32,
     two: Option<'a, MyEnum>,
     three: &'foo i32,
 }
+text
+pub struct MyTupleStruct(pub i32, u32);
 text
 
 text
