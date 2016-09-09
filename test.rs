@@ -215,3 +215,8 @@ fn foo(bar: *const i32) {
 
 // Keywords and known types in wrapper structs (#56)
 pub struct Foobar(pub Option<bool>);
+
+// Lifetimes in associated type definitions (#55)
+trait Foo {
+    type B: A + 'static;
+}
