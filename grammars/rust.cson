@@ -86,6 +86,11 @@
     'name': 'storage.modifier.visibility.rust'
     'match': '\\bpub\\b'
   }
+  'unsafe': {
+    'comment': 'Unsafe code keyword'
+    'name': 'keyword.other.unsafe.rust'
+    'match': '\\bunsafe\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -234,11 +239,7 @@
     'name': 'keyword.other.rust'
     'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|where|move)\\b'
   }
-  {
-    'comment': 'Unsafe code keyword'
-    'name': 'keyword.other.unsafe.rust'
-    'match': '\\bunsafe\\b'
-  }
+  { 'include': '#unsafe' }
   { 'include': '#sigils' }
   { 'include': '#self' }
   { 'include': '#mut' }
@@ -340,6 +341,12 @@
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
       { 'include': '#const' }
+      { 'include': '#unsafe' }
+      {
+        'comment': 'Function arguments'
+        'match': 'fn'
+        'name': 'keyword.other.fn.rust'
+      }
     ]
   }
   # Type declaration

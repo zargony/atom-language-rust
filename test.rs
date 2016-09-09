@@ -215,3 +215,8 @@ fn foo(bar: *const i32) {
 
 // Keywords and known types in wrapper structs (#56)
 pub struct Foobar(pub Option<bool>);
+
+// Unsafe in function arguments (#73)
+unsafe fn foo();
+fn foo(f: unsafe fn());
+
