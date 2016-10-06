@@ -375,6 +375,7 @@
       { 'include': '#line_comment' }
       { 'include': '#sigils' }
       { 'include': '#mut' }
+      { 'include': '#lifetime' }
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
