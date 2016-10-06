@@ -301,7 +301,7 @@ describe 'Rust grammar', ->
       expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
 
   it 'tokenizes keywords', ->
-    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'as', 'where', 'move']
+    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'as', 'move']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.other.rust']
@@ -527,3 +527,21 @@ describe 'Rust grammar', ->
     ''')
     expect(tokens[0][0]).toEqual value: 'unsafe', scopes: ['source.rust', 'keyword.other.unsafe.rust']
     expect(tokens[1][4]).toEqual value: 'unsafe', scopes: ['source.rust', 'keyword.other.unsafe.rust']
+
+  it 'tokenizes where clauses (issue \\#57)', ->
+    tokens = grammar.tokenizeLines('''
+      impl Foo<A, B> where text { }
+      impl Foo<A, B> for C where text { }
+      impl Foo<A, B> for C {
+          fn foo<A, B> -> C where text { }
+      }
+      fn foo<A, B> -> C where text { }
+      struct Foo<A, B> where text { }
+      trait Foo<A, B> : C where { }
+    ''')
+    expect(tokens[0][6]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[1][8]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[3][8]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[5][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[6][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[7][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
