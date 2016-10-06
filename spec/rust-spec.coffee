@@ -519,3 +519,11 @@ describe 'Rust grammar', ->
     ''')
     expect(tokens[1][5]).toEqual value: '\'', scopes: ['source.rust', 'storage.modifier.lifetime.rust']
     expect(tokens[1][6]).toEqual value: 'static', scopes: ['source.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+
+  it 'tokenizes unsafe keywords in function arguments (issue \\#73)', ->
+    tokens = grammar.tokenizeLines('''
+      unsafe fn foo();
+      fn foo(f: unsafe fn());
+    ''')
+    expect(tokens[0][0]).toEqual value: 'unsafe', scopes: ['source.rust', 'keyword.other.unsafe.rust']
+    expect(tokens[1][4]).toEqual value: 'unsafe', scopes: ['source.rust', 'keyword.other.unsafe.rust']
