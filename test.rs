@@ -73,3 +73,7 @@ impl MyStruct<'foo> {
     text
 }
 text
+
+// Unsafe in function arguments (#73)
+unsafe fn foo();
+fn foo(f: unsafe fn());
