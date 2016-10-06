@@ -456,7 +456,7 @@ describe 'Rust grammar', ->
   # Issues
   #
 
-  it 'tokenizes loop expression labels (issue #2)', ->
+  it 'tokenizes loop expression labels (issue \\#2)', ->
     tokens = grammar.tokenizeLines('''
       infinity: loop {
           do_serious_stuff();
@@ -470,30 +470,30 @@ describe 'Rust grammar', ->
     expect(tokens[3][3]).toEqual value: '\'', scopes: ['source.rust', 'storage.modifier.lifetime.rust']
     expect(tokens[3][4]).toEqual value: 'infinity', scopes: ['source.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
 
-  it 'tokenizes isize/usize type suffixes (issue #22)', ->
+  it 'tokenizes isize/usize type suffixes (issue \\#22)', ->
     for t in ['isize', 'usize']
       {tokens} = grammar.tokenizeLine("let x = 123#{t};")
       expect(tokens[4]).toEqual value: "123#{t}", scopes: ['source.rust', 'constant.numeric.integer.decimal.rust']
 
-  it 'tokenizes float literals without +/- after E (issue #30)', ->
+  it 'tokenizes float literals without +/- after E (issue \\#30)', ->
     {tokens} = grammar.tokenizeLine('let x = 1.2345e6;')
     expect(tokens[4]).toEqual value: '1.2345e6', scopes: ['source.rust', 'constant.numeric.float.rust']
 
-  it 'tokenizes nested generics (issue #33, #37)', ->
+  it 'tokenizes nested generics (issue \\#33, \\#37)', ->
     {tokens} = grammar.tokenizeLine('let x: Vec<Vec<u8>> = Vec::new();')
     # FIXME: < and > are tokenized as comparison keywords? :(
     #expect(tokens[3]).toEqual value: 'Vec<', scopes: ['source.rust', 'storage.class.std.rust']
     #expect(tokens[4]).toEqual value: 'Vec<', scopes: ['source.rust', 'storage.class.std.rust']
     #expect(tokens[5]).toEqual value: 'u8', scopes: ['source.rust', 'storage.type.core.rust']
 
-  it 'tokenizes == properly (issue #40)', ->
+  it 'tokenizes == properly (issue \\#40)', ->
     tokens = grammar.tokenizeLines('''
       struct Foo { x: i32 }
       if x == 1 { }
       ''')
     expect(tokens[1][2]).toEqual value: '==', scopes: ['source.rust', 'keyword.operator.comparison.rust']
 
-  it 'tokenizes const function parameters (issue #52)', ->
+  it 'tokenizes const function parameters (issue \\#52)', ->
     tokens = grammar.tokenizeLines('''
       fn foo(bar: *const i32) {
         let _ = 1234 as *const u32;
@@ -504,7 +504,7 @@ describe 'Rust grammar', ->
     expect(tokens[1][9]).toEqual value: '*', scopes: ['source.rust', 'keyword.operator.sigil.rust']
     expect(tokens[1][10]).toEqual value: 'const', scopes: ['source.rust', 'storage.modifier.const.rust']
 
-  it 'tokenizes keywords and known types in wrapper structs (issue #56)', ->
+  it 'tokenizes keywords and known types in wrapper structs (issue \\#56)', ->
     {tokens} = grammar.tokenizeLine('pub struct Foobar(pub Option<bool>);')
     expect(tokens[6]).toEqual value: 'pub', scopes: ['source.rust', 'storage.modifier.visibility.rust']
     expect(tokens[8]).toEqual value: 'Option', scopes: ['source.rust', 'storage.type.core.rust']
