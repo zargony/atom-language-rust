@@ -510,3 +510,12 @@ describe 'Rust grammar', ->
     expect(tokens[8]).toEqual value: 'Option', scopes: ['source.rust', 'storage.type.core.rust']
     # FIXME: < and > are tokenized as comparison keywords? :(
     expect(tokens[10]).toEqual value: 'bool', scopes: ['source.rust', 'storage.type.core.rust']
+
+  it 'tokenizes lifetimes in associated type definitions (issue \\#55)', ->
+    tokens = grammar.tokenizeLines('''
+      trait Foo {
+        type B: A + 'static;
+      }
+    ''')
+    expect(tokens[1][5]).toEqual value: '\'', scopes: ['source.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[1][6]).toEqual value: 'static', scopes: ['source.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']

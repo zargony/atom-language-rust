@@ -73,8 +73,3 @@ impl MyStruct<'foo> {
     text
 }
 text
-
-// Lifetimes in associated type definitions (#55)
-trait Foo {
-    type B: A + 'static;
-}
