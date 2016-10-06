@@ -91,6 +91,11 @@
     'name': 'keyword.other.unsafe.rust'
     'match': '\\bunsafe\\b'
   }
+  'where': {
+    'comment': 'Generic where clause'
+    'name': 'keyword.other.where.rust'
+    'match': '\\bwhere\\b'
+  }
   'lifetime': {
     'comment': 'Named lifetime'
     'name': 'storage.modifier.lifetime.rust'
@@ -237,7 +242,7 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|where|move)\\b'
+    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|move)\\b'
   }
   { 'include': '#unsafe' }
   { 'include': '#sigils' }
@@ -341,6 +346,7 @@
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
       { 'include': '#const' }
+      { 'include': '#where' }
       { 'include': '#unsafe' }
       {
         'comment': 'Function arguments'
@@ -366,6 +372,7 @@
       { 'include': '#type_params' }
       { 'include': '#core_types' }
       { 'include': '#pub' }
+      { 'include': '#where' }
     ]
   }
   # Type alias
@@ -412,6 +419,7 @@
       { 'include': '#std_types' }
       { 'include': '#std_traits' }
       { 'include': '#type_params' }
+      { 'include': '#where' }
       {
         'name': 'storage.type.rust'
         'match': '\\bfor\\b'

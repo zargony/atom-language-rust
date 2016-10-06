@@ -73,3 +73,19 @@ impl MyStruct<'foo> {
     text
 }
 text
+
+// where clause (#57)
+impl Foo<A, B> where text { }
+text
+impl Foo<A, B> for C where text { }
+text
+impl Foo<A, B> for C {
+    fn foo<A, B> -> C where text { }
+}
+text
+fn foo<A, B> -> C where text { }
+text
+struct Foo<A, B> where text { }
+text
+trait Foo<A, B> : C where { }
+text
