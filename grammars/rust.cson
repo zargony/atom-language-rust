@@ -177,6 +177,10 @@
     'end': '\\]'
     'patterns': [
       { 'include': '#string_literal' }
+      { 'include': '#block_doc_comment' }
+      { 'include': '#block_comment' }
+      { 'include': '#line_doc_comment' }
+      { 'include': '#line_comment' }
     ]
   }
   # Strings
