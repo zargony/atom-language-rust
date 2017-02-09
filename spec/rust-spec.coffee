@@ -545,3 +545,17 @@ describe 'Rust grammar', ->
     expect(tokens[5][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
     expect(tokens[6][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
     expect(tokens[7][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+
+  it 'tokenizes comments in attributes (issue \\#95)', ->
+    tokens = grammar.tokenizeLines('''
+      #[
+      /* block comment */
+      // line comment
+      derive(Debug)]
+      struct D { }
+    ''')
+    expect(tokens[0][0]).toEqual value: '#[', scopes: ['source.rust', 'meta.attribute.rust']
+    expect(tokens[1][1]).toEqual value: ' block comment ', scopes: ['source.rust', 'meta.attribute.rust', 'comment.block.rust']
+    expect(tokens[2][1]).toEqual value: ' line comment', scopes: ['source.rust', 'meta.attribute.rust', 'comment.line.double-slash.rust']
+    expect(tokens[3][0]).toEqual value: 'derive(Debug)', scopes: ['source.rust', 'meta.attribute.rust']
+    expect(tokens[4][0]).toEqual value: 'struct', scopes: ['source.rust', 'storage.type.rust']
