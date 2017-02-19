@@ -559,3 +559,10 @@ describe 'Rust grammar', ->
     expect(tokens[2][1]).toEqual value: ' line comment', scopes: ['source.rust', 'meta.attribute.rust', 'comment.line.double-slash.rust']
     expect(tokens[3][0]).toEqual value: 'derive(Debug)', scopes: ['source.rust', 'meta.attribute.rust']
     expect(tokens[4][0]).toEqual value: 'struct', scopes: ['source.rust', 'storage.type.rust']
+
+  it 'does not tokenize `fn` in argument name as a keyword incorrectly', ->
+    {tokens} = grammar.tokenizeLine('fn foo(fn_x: ()) {}')
+    expect(tokens[0]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
+    expect(tokens[1]).toEqual value: ' ', scopes: ['source.rust']
+    expect(tokens[2]).toEqual value : 'foo', scopes : [ 'source.rust', 'entity.name.function.rust' ]
+    expect(tokens[3]).toEqual value : '(fn_x: ()) ', scopes : [ 'source.rust' ]

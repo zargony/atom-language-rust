@@ -354,7 +354,7 @@
       { 'include': '#unsafe' }
       {
         'comment': 'Function arguments'
-        'match': 'fn'
+        'match': '\bfn\b'
         'name': 'keyword.other.fn.rust'
       }
     ]
