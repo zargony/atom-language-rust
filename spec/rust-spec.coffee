@@ -566,3 +566,67 @@ describe 'Rust grammar', ->
     expect(tokens[1]).toEqual value: ' ', scopes: ['source.rust']
     expect(tokens[2]).toEqual value : 'foo', scopes : [ 'source.rust', 'entity.name.function.rust' ]
     expect(tokens[3]).toEqual value : '(fn_x: ()) ', scopes : [ 'source.rust' ]
+
+  it 'tokenizes function calls with type arguments', ->
+    tokens = grammar.tokenizeLines('''
+      fn main() {
+      foo::bar::<i32, ()>();
+      _func::<i32, ()>();
+      }
+    ''')
+    expect(tokens[1][0]).toEqual value: 'foo', scopes: ['source.rust']
+    expect(tokens[1][1]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[1][2]).toEqual value: 'bar', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[1][3]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[1][4]).toEqual value: '<', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[1][5]).toEqual value: 'i32', scopes: ['source.rust', 'meta.type_params.rust', 'storage.type.core.rust']
+    expect(tokens[1][6]).toEqual value: ', ()', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[1][7]).toEqual value: '>', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[1][8]).toEqual value: '(', scopes: ['source.rust']
+    expect(tokens[1][9]).toEqual value: ');', scopes: ['source.rust']
+
+    expect(tokens[2][0]).toEqual value: '_func', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[2][1]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[2][2]).toEqual value: '<', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[2][3]).toEqual value: 'i32', scopes: ['source.rust', 'meta.type_params.rust', 'storage.type.core.rust']
+    expect(tokens[2][4]).toEqual value: ', ()', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[2][5]).toEqual value: '>', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[2][6]).toEqual value: '(', scopes: ['source.rust']
+    expect(tokens[2][7]).toEqual value: ');', scopes: ['source.rust']
+
+  it 'tokenizes function calls without type arguments', ->
+    tokens = grammar.tokenizeLines('''
+      fn main() {
+      foo.call();
+      }
+    ''')
+    expect(tokens[1][0]).toEqual value: 'foo.', scopes: ['source.rust']
+    expect(tokens[1][1]).toEqual value: 'call', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[1][2]).toEqual value: '(', scopes: ['source.rust']
+    expect(tokens[1][3]).toEqual value: ');', scopes: ['source.rust']
+
+  it 'tokenizes function names correctly', ->
+    tokens = grammar.tokenizeLines('''
+      fn main() {
+      a();
+      a1();
+      a_();
+      a_1();
+      a1_();
+      _a();
+      _0();
+      _a0();
+      _0a();
+      __();
+      }
+    ''')
+    expect(tokens[1][0]).toEqual value: 'a', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[2][0]).toEqual value: 'a1', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[3][0]).toEqual value: 'a_', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[4][0]).toEqual value: 'a_1', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[5][0]).toEqual value: 'a1_', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[6][0]).toEqual value: '_a', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[7][0]).toEqual value: '_0', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[8][0]).toEqual value: '_a0', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[9][0]).toEqual value: '_0a', scopes: ['source.rust', 'entity.name.function.rust']
+    expect(tokens[10][0]).toEqual value: '__', scopes: ['source.rust', 'entity.name.function.rust']
