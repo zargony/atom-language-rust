@@ -294,14 +294,14 @@ describe 'Rust grammar', ->
   #
 
   it 'tokenizes control keywords', ->
-    for t in ['break', 'continue', 'else', 'if', 'in', 'for', 'loop', 'match', 'return', 'while']
+    for t in ['break', 'continue', 'do catch', 'else', 'if', 'in', 'for', 'loop', 'match', 'return', 'while']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.control.rust']
       expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
 
   it 'tokenizes keywords', ->
-    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'as', 'move']
+    for t in ['crate', 'do', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'as', 'move']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.other.rust']
@@ -630,3 +630,7 @@ describe 'Rust grammar', ->
     expect(tokens[8][0]).toEqual value: '_a0', scopes: ['source.rust', 'entity.name.function.rust']
     expect(tokens[9][0]).toEqual value: '_0a', scopes: ['source.rust', 'entity.name.function.rust']
     expect(tokens[10][0]).toEqual value: '__', scopes: ['source.rust', 'entity.name.function.rust']
+
+  it 'tokenizes sole catch as text', ->
+    {tokens} = grammar.tokenizeLine('catch')
+    expect(tokens[0]).toEqual value: 'catch', scopes: ['source.rust']

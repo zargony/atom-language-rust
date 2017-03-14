@@ -241,12 +241,12 @@
   {
     'comment': 'Control keyword'
     'name': 'keyword.control.rust'
-    'match': '\\b(break|continue|else|if|in|for|loop|match|return|while)\\b'
+    'match': '\\b(break|continue|do catch|else|if|in|for|loop|match|return|while)\\b'
   }
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|move)\\b'
+    'match': '\\b(crate|do|extern|mod|let|proc|ref|use|super|as|move)\\b'
   }
   { 'include': '#unsafe' }
   { 'include': '#sigils' }
