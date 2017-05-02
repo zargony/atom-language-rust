@@ -539,8 +539,8 @@ describe 'Rust grammar', ->
       struct Foo<A, B> where text { }
       trait Foo<A, B> : C where { }
     ''')
-    expect(tokens[0][6]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
-    expect(tokens[1][8]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[0][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
+    expect(tokens[1][11]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
     expect(tokens[3][8]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
     expect(tokens[5][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
     expect(tokens[6][7]).toEqual value: 'where', scopes: ['source.rust', 'keyword.other.where.rust']
