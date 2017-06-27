@@ -280,7 +280,7 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|as|move)\\b'
+    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|move)\\b'
   }
   { 'include': '#unsafe' }
   { 'include': '#sigils' }

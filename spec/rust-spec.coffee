@@ -301,7 +301,7 @@ describe 'Rust grammar', ->
       expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
 
   it 'tokenizes keywords', ->
-    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'as', 'move']
+    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'move']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.other.rust']
@@ -630,3 +630,11 @@ describe 'Rust grammar', ->
     expect(tokens[8][0]).toEqual value: '_a0', scopes: ['source.rust', 'entity.name.function.rust']
     expect(tokens[9][0]).toEqual value: '_0a', scopes: ['source.rust', 'entity.name.function.rust']
     expect(tokens[10][0]).toEqual value: '__', scopes: ['source.rust', 'entity.name.function.rust']
+
+  it 'tokenizes `as` as an operator (issue \\#110)', ->
+    {tokens} = grammar.tokenizeLine('let i = 10 as f32;')
+    expect(tokens[0]).toEqual value: 'let', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[2]).toEqual value: '=', scopes: ['source.rust', 'keyword.operator.assignment.rust']
+    expect(tokens[4]).toEqual value: '10', scopes: ['source.rust', 'constant.numeric.integer.decimal.rust']
+    expect(tokens[6]).toEqual value: 'as', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[8]).toEqual value: 'f32', scopes: ['source.rust', 'storage.type.core.rust']
