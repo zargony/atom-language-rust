@@ -301,10 +301,17 @@ describe 'Rust grammar', ->
       expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
 
   it 'tokenizes keywords', ->
-    for t in ['crate', 'extern', 'mod', 'let', 'proc', 'ref', 'use', 'super', 'move']
+    for t in ['crate', 'extern', 'mod', 'let', 'ref', 'use', 'super', 'move']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.other.rust']
+      expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
+
+  it 'tokenizes reserved keywords', ->
+    for t in ['abstract', 'alignof', 'become', 'do', 'final', 'macro', 'offsetof', 'override', 'priv', 'proc', 'pure', 'sizeof', 'typeof', 'virtual', 'yield']
+      {tokens} = grammar.tokenizeLine("text #{t} text")
+      expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
+      expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'invalid.deprecated.rust']
       expect(tokens[2]).toEqual value: ' text', scopes: ['source.rust']
 
   it 'tokenizes unsafe keyword', ->
@@ -638,3 +645,10 @@ describe 'Rust grammar', ->
     expect(tokens[4]).toEqual value: '10', scopes: ['source.rust', 'constant.numeric.integer.decimal.rust']
     expect(tokens[6]).toEqual value: 'as', scopes: ['source.rust', 'keyword.operator.misc.rust']
     expect(tokens[8]).toEqual value: 'f32', scopes: ['source.rust', 'storage.type.core.rust']
+
+  it 'tokenizes a reserved keyword as deprecated (issue \\#94)', ->
+    {tokens} = grammar.tokenizeLine('let priv = 10;')
+    expect(tokens[0]).toEqual value: 'let', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[2]).toEqual value: 'priv', scopes: ['source.rust', 'invalid.deprecated.rust']
+    expect(tokens[4]).toEqual value: '=', scopes: ['source.rust', 'keyword.operator.assignment.rust']
+    expect(tokens[6]).toEqual value: '10', scopes: ['source.rust', 'constant.numeric.integer.decimal.rust']

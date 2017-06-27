@@ -280,7 +280,12 @@
   {
     'comment': 'Keyword'
     'name': 'keyword.other.rust'
-    'match': '\\b(crate|extern|mod|let|proc|ref|use|super|move)\\b'
+    'match': '\\b(crate|extern|mod|let|ref|use|super|move)\\b'
+  }
+  {
+    'comment': 'Reserved keyword'
+    'name': 'invalid.deprecated.rust'
+    'match': '\\b(abstract|alignof|become|do|final|macro|offsetof|override|priv|proc|pure|sizeof|typeof|virtual|yield)\\b'
   }
   { 'include': '#unsafe' }
   { 'include': '#sigils' }
