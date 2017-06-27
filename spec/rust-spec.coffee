@@ -652,3 +652,20 @@ describe 'Rust grammar', ->
     expect(tokens[2]).toEqual value: 'priv', scopes: ['source.rust', 'invalid.deprecated.rust']
     expect(tokens[4]).toEqual value: '=', scopes: ['source.rust', 'keyword.operator.assignment.rust']
     expect(tokens[6]).toEqual value: '10', scopes: ['source.rust', 'constant.numeric.integer.decimal.rust']
+
+  it 'tokenizes types in `impl` statements correctly (issue \\#7)', ->
+    tokens = grammar.tokenizeLines('''
+      struct MyObject<'a> {
+          mystr: &'a str
+      }
+      impl<'a> MyObject<'a> {
+          fn print(&self) {}
+      }
+      impl<'a> Clone for MyObject<'a> {
+          fn clone(&self) {}
+      }
+    ''')
+    expect(tokens[0][2]).toEqual value: 'MyObject', scopes: ['source.rust', 'entity.name.type.rust']
+    expect(tokens[3][6]).toEqual value: 'MyObject', scopes: ['source.rust', 'entity.name.type.rust']
+    expect(tokens[6][6]).toEqual value: 'Clone', scopes: ['source.rust', 'support.type.core.rust']
+    expect(tokens[6][10]).toEqual value: 'MyObject', scopes: ['source.rust', 'entity.name.type.rust']
