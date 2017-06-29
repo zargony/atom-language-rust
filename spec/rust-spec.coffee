@@ -385,6 +385,24 @@ describe 'Rust grammar', ->
   # Snippets
   #
 
+  it 'tokenizes imports', ->
+    tokens = grammar.tokenizeLines('''
+      extern crate foo;
+      use std::slice;
+      use std::{num, str};
+      use self::foo::{bar, baz};
+      ''')
+    expect(tokens[0][0]).toEqual value: 'extern', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[0][2]).toEqual value: 'crate', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[1][0]).toEqual value: 'use', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[1][2]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[2][0]).toEqual value: 'use', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[2][2]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[3][0]).toEqual value: 'use', scopes: ['source.rust', 'keyword.other.rust']
+    expect(tokens[3][2]).toEqual value: 'self', scopes: ['source.rust', 'variable.language.rust']
+    expect(tokens[3][3]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+    expect(tokens[3][5]).toEqual value: '::', scopes: ['source.rust', 'keyword.operator.misc.rust']
+
   it 'tokenizes enums', ->
     tokens = grammar.tokenizeLines('''
       pub enum MyEnum {

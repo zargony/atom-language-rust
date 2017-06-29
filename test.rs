@@ -1,17 +1,6 @@
 // TODO: Move all of these to automated grammar specs in spec/rust-spec.coffee
 
 text
-extern crate foo;
-text
-use std::slice;
-text
-use std::{num, str};
-text
-use self::foo::{bar, baz};
-text
-
-
-text
 impl<'foo> MyTrait for MyStruct<'foo> {
     text
     fn create_something (param: &str, mut other_param: u32) -> Option<Self> {
