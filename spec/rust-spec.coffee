@@ -567,14 +567,14 @@ describe 'Rust grammar', ->
     expect(tokens[3][0]).toEqual value: 'derive(Debug)', scopes: ['source.rust', 'meta.attribute.rust']
     expect(tokens[4][0]).toEqual value: 'struct', scopes: ['source.rust', 'storage.type.rust']
 
-  it 'does not tokenize `fn` in argument name as a keyword incorrectly', ->
+  it 'does not tokenize `fn` in argument name as a keyword incorrectly (issue \\#99)', ->
     {tokens} = grammar.tokenizeLine('fn foo(fn_x: ()) {}')
     expect(tokens[0]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
     expect(tokens[1]).toEqual value: ' ', scopes: ['source.rust']
     expect(tokens[2]).toEqual value : 'foo', scopes : [ 'source.rust', 'entity.name.function.rust' ]
     expect(tokens[3]).toEqual value : '(fn_x: ()) ', scopes : [ 'source.rust' ]
 
-  it 'tokenizes function calls with type arguments', ->
+  it 'tokenizes function calls with type arguments (issue \\#98)', ->
     tokens = grammar.tokenizeLines('''
       fn main() {
       foo::bar::<i32, ()>();
@@ -601,7 +601,7 @@ describe 'Rust grammar', ->
     expect(tokens[2][6]).toEqual value: '(', scopes: ['source.rust']
     expect(tokens[2][7]).toEqual value: ');', scopes: ['source.rust']
 
-  it 'tokenizes function calls without type arguments', ->
+  it 'tokenizes function calls without type arguments (issue \\#98)', ->
     tokens = grammar.tokenizeLines('''
       fn main() {
       foo.call();
@@ -612,7 +612,7 @@ describe 'Rust grammar', ->
     expect(tokens[1][2]).toEqual value: '(', scopes: ['source.rust']
     expect(tokens[1][3]).toEqual value: ');', scopes: ['source.rust']
 
-  it 'tokenizes function names correctly', ->
+  it 'tokenizes function names correctly (issue \\#98)', ->
     tokens = grammar.tokenizeLines('''
       fn main() {
       a();
