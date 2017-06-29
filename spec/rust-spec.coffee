@@ -477,6 +477,54 @@ describe 'Rust grammar', ->
     expect(tokens[4][6]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
     expect(tokens[4][11]).toEqual value: 'T', scopes: ['source.rust', 'meta.type_params.rust', 'meta.type_params.rust']
 
+  it 'tokenizes impls', ->
+    tokens = grammar.tokenizeLines('''
+      impl MyTrait {
+          fn do_something () { unimplemented!() }
+      }
+      ''')
+    expect(tokens[0][0]).toEqual value: 'impl', scopes: ['source.rust', 'storage.type.rust']
+    expect(tokens[0][2]).toEqual value: 'MyTrait', scopes: ['source.rust', 'entity.name.type.rust']
+
+  it 'tokenizes trait impls', ->
+    tokens = grammar.tokenizeLines('''
+      impl MyTrait for MyStruct {
+          fn create_something (param: &str, mut other_param: u32) -> Option<Self> { unimplemented!() }
+          fn do_whatever<T: Send+Share+Whatever, U: Freeze> (param: &T, other_param: u32) -> Option<U> { unimplemented!() }
+          fn do_all_the_work (&mut self, param: &str, mut other_param: u32) -> bool { unimplemented!() }
+          fn do_even_more<'a, T: Send+Whatever, U: Something<T>+Freeze> (&'a mut self, param: &T) -> &'a U { unimplemented!() }
+      }
+      ''')
+    expect(tokens[0][0]).toEqual value: 'impl', scopes: ['source.rust', 'storage.type.rust']
+    expect(tokens[0][2]).toEqual value: 'MyTrait', scopes: ['source.rust', 'entity.name.type.rust']
+    expect(tokens[0][4]).toEqual value: 'for', scopes: ['source.rust', 'storage.type.rust']
+    expect(tokens[0][6]).toEqual value: 'MyStruct', scopes: ['source.rust', 'entity.name.type.rust']
+    expect(tokens[1][1]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
+    expect(tokens[1][12]).toEqual value: 'Option', scopes: ['source.rust', 'storage.type.core.rust']
+    expect(tokens[1][14]).toEqual value: 'Self', scopes: ['source.rust', 'meta.type_params.rust', 'storage.type.core.rust']
+    expect(tokens[2][1]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
+    expect(tokens[2][6]).toEqual value: 'Send', scopes: ['source.rust', 'meta.type_params.rust', 'support.type.marker.rust']
+    expect(tokens[2][7]).toEqual value: '+Share+Whatever, U: Freeze', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[3][1]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
+    expect(tokens[4][1]).toEqual value: 'fn', scopes: ['source.rust', 'keyword.other.fn.rust']
+    expect(tokens[4][5]).toEqual value: '\'', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[4][6]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+    expect(tokens[4][11]).toEqual value: 'T', scopes: ['source.rust', 'meta.type_params.rust', 'meta.type_params.rust']
+
+  it 'tokenizes generics and lifetimes in enums'  # TODO
+
+  it 'tokenizes generics and lifetimes in structs'  # TODO
+
+  it 'tokenizes generics and lifetimes in impls'  # TODO
+
+  it 'tokenizes generics and lifetimes in functions'  # TODO
+
+  it 'tokenizes function defintions'  # TODO
+
+  it 'tokenizes function calls'   # TODO
+
+  it 'tokenizes closures'   # TODO
+
   #
   # Issues
   #
