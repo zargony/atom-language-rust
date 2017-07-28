@@ -441,6 +441,27 @@ describe 'Rust grammar', ->
     expect(tokens[4]).toEqual value: 'MyTupleStruct', scopes: ['source.rust', 'entity.name.type.rust']
     expect(tokens[6]).toEqual value: 'pub', scopes: ['source.rust', 'storage.modifier.visibility.rust']
 
+  it 'tokenizes unions', ->
+    tokens = grammar.tokenizeLines('''
+      pub union MyUnion<'foo> {
+          pub one: u32,
+          two: Option<'a, MyEnum>,
+          three: &'foo i32,
+      }
+      ''')
+    expect(tokens[0][0]).toEqual value: 'pub', scopes: ['source.rust', 'storage.modifier.visibility.rust']
+    expect(tokens[0][2]).toEqual value: 'union', scopes: ['source.rust', 'storage.type.rust']
+    expect(tokens[0][4]).toEqual value: 'MyUnion', scopes: ['source.rust', 'entity.name.type.rust']
+    expect(tokens[0][5]).toEqual value: '<', scopes: ['source.rust', 'meta.type_params.rust']
+    expect(tokens[0][6]).toEqual value: '\'', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[0][7]).toEqual value: 'foo', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+    expect(tokens[1][1]).toEqual value: 'pub', scopes: ['source.rust', 'storage.modifier.visibility.rust']
+    expect(tokens[2][3]).toEqual value: '\'', scopes: ['source.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[2][4]).toEqual value: 'a', scopes: ['source.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+    expect(tokens[3][2]).toEqual value: '\'', scopes: ['source.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[3][3]).toEqual value: 'foo', scopes: ['source.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+
+
   it 'tokenizes type aliases', ->
     {tokens} = grammar.tokenizeLine('type MyType = u32;')
     expect(tokens[0]).toEqual value: 'type', scopes: ['source.rust', 'storage.type.rust']
