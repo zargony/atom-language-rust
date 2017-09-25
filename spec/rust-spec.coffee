@@ -756,3 +756,10 @@ describe 'Rust grammar', ->
     expect(tokens[3][6]).toEqual value: 'MyObject', scopes: ['source.rust', 'entity.name.type.rust']
     expect(tokens[6][6]).toEqual value: 'Clone', scopes: ['source.rust', 'support.type.core.rust']
     expect(tokens[6][10]).toEqual value: 'MyObject', scopes: ['source.rust', 'entity.name.type.rust']
+
+  it 'tokenizes lifetimes in type parameters containing generic functions (issue \\#104)', ->
+    tokens = grammar.tokenizeLines("fn foo<'a, F: Fn(&Foo) -> bool + 'a>(f: F) { unimplemented!() }")
+    expect(tokens[0][4]).toEqual value: "'", scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[0][5]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+    expect(tokens[0][13]).toEqual value: "'", scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust']
+    expect(tokens[0][14]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']

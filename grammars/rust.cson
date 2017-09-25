@@ -151,7 +151,7 @@
     'comment': 'Type parameters'
     'name': 'meta.type_params.rust'
     'begin': '<(?![=<])'
-    'end': '>'
+    'end': '(?<![\-])>'
     'patterns': [
       { 'include': '#block_comment' }
       { 'include': '#line_comment' }
