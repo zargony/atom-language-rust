@@ -344,7 +344,7 @@
   {
     'comment': 'Standard library macro'
     'name': 'support.function.std.rust'
-    'match': '\\b(format|print|println|select|vec)!'
+    'match': '\\b(format|print|println|eprint|eprintln|select|vec)!'
   }
   {
     'comment': 'Logging macro'
