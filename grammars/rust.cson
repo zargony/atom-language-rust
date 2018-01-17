@@ -334,12 +334,12 @@
   {
     'comment': 'Built-in macro'
     'name': 'support.function.builtin.rust'
-    'match': '\\b(macro_rules|format_args|env|option_env|concat_idents|concat|log_syntax|line|column|file|stringify|include|include_str|include_bytes|module_path|asm|cfg|trace_macros)!'
+    'match': '\\b(macro_rules|compile_error|format_args|env|option_env|concat_idents|concat|line|column|file|stringify|include|include_str|include_bytes|module_path|cfg)!'
   }
   {
     'comment': 'Core macro'
     'name': 'support.function.core.rust'
-    'match': '\\b(panic|assert|assert_eq|debug_assert|debug_assert_eq|try|write|writeln|unreachable|unimplemented)!'
+    'match': '\\b(panic|assert|assert_eq|assert_ne|debug_assert|debug_assert_eq|debug_assert_ne|try|write|writeln|unreachable|unimplemented)!'
   }
   {
     'comment': 'Standard library macro'
