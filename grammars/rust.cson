@@ -71,6 +71,11 @@
     'name': 'storage.modifier.mut.rust'
     'match': '\\bmut\\b'
   }
+  'dyn': {
+    'comment': 'Dynamic modifier'
+    'name': 'storage.modifier.mut.rust'
+    'match': '\\bmut\\b'
+  }
   'box': {
     'comment': 'Box storage modifier'
     'name': 'storage.modifier.box.rust'
@@ -157,6 +162,7 @@
       { 'include': '#line_comment' }
       { 'include': '#sigils' }
       { 'include': '#mut' }
+      { 'include': '#dyn' }
       { 'include': '#lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
@@ -291,6 +297,7 @@
   { 'include': '#sigils' }
   { 'include': '#self' }
   { 'include': '#mut' }
+  { 'include': '#dyn' }
   { 'include': '#box' }
   { 'include': '#lifetime' }
   { 'include': '#ref_lifetime' }
@@ -393,6 +400,7 @@
       { 'include': '#sigils' }
       { 'include': '#self' }
       { 'include': '#mut' }
+      { 'include': '#dyn' }
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
       { 'include': '#core_marker' }
@@ -444,6 +452,7 @@
       { 'include': '#line_comment' }
       { 'include': '#sigils' }
       { 'include': '#mut' }
+      { 'include': '#dyn' }
       { 'include': '#lifetime' }
       { 'include': '#ref_lifetime' }
       { 'include': '#core_types' }
