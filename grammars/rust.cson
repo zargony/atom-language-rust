@@ -73,7 +73,7 @@
   }
   'dyn': {
     'comment': 'Dynamic modifier'
-    'name': 'storage.modifier.mut.rust'
+    'name': 'storage.modifier.dyn.rust'
     'match': '\\bdyn\\b'
   }
   'impl': {
