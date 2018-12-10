@@ -763,3 +763,75 @@ describe 'Rust grammar', ->
     expect(tokens[0][5]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
     expect(tokens[0][13]).toEqual value: "'", scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust']
     expect(tokens[0][14]).toEqual value: 'a', scopes: ['source.rust', 'meta.type_params.rust', 'storage.modifier.lifetime.rust', 'entity.name.lifetime.rust']
+
+  #
+  # impl type modifier
+  #
+
+  it 'tokenizes impl type modifier in return type position', ->
+    tokens = grammar.tokenizeLines("fn foo() -> impl Iterator<Item=u8> { unimplemented!() }")
+    expect(tokens[0][4]).toEqual value: "impl", scopes:['source.rust', 'storage.modifier.impl.rust']
+
+  it 'tokenize impl type modifier in argument position', ->
+    tokens = grammar.tokenizeLines("fn foo(i: impl Iterator<Item=u8>) { unimplemented!() }")
+    expect(tokens[0][4]).toEqual value: "impl", scopes:['source.rust', 'storage.modifier.impl.rust']
+
+  it 'tokenize impl type modifier in parameter position in impl blocks', ->
+    tokens = grammar.tokenizeLines('''
+      impl Foo {
+        fn foo(i: impl Iterator<Item=u8>) { unimplemented!() }
+      }
+    ''')
+    expect(tokens[1][5]).toEqual value: "impl", scopes:['source.rust', 'storage.modifier.impl.rust']
+
+  it 'tokenize impl type modifier in return position in impl blocks', ->
+    tokens = grammar.tokenizeLines('''
+      impl Foo {
+        fn foo() -> impl Iterator<Item=u8> { unimplemented!() }
+      }
+    ''')
+    expect(tokens[1][5]).toEqual value: "impl", scopes:['source.rust', 'storage.modifier.impl.rust']
+
+  #
+  # dyn type modifier
+  #
+
+  it 'tokenizes dyn type modifier in return type position', ->
+    tokens = grammar.tokenizeLines("fn foo() -> &'static dyn Iterator<Item=u8> { unimplemented!() }")
+    expect(tokens[0][8]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenizes dyn type modifier in return type position, as type parameter', ->
+    tokens = grammar.tokenizeLines("fn foo() -> Box<dyn Debug> { unimplemented!() }")
+    expect(tokens[0][6]).toEqual value: "dyn", scopes:['source.rust', 'meta.type_params.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenize impl type modifier in argument position', ->
+    tokens = grammar.tokenizeLines("fn foo(i: &dyn Iterator<Item=u8>) { unimplemented!() }")
+    expect(tokens[0][5]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenizes dyn type modifier parameter type position, as type parameter', ->
+    tokens = grammar.tokenizeLines("fn foo(b: Box<dyn Debug>) { unimplemented!() }")
+    expect(tokens[0][6]).toEqual value: "dyn", scopes:['source.rust', 'meta.type_params.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenize dyn type modifier in parameter position in impl blocks', ->
+    tokens = grammar.tokenizeLines('''
+      impl Foo {
+        fn foo(i: &dyn Iterator<Item=u8>) { unimplemented!() }
+      }
+    ''')
+    expect(tokens[1][6]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenize dyn type modifier in return position in impl blocks', ->
+    tokens = grammar.tokenizeLines('''
+      impl Foo {
+        fn foo() -> &'static dyn Iterator<Item=u8> { unimplemented!() }
+      }
+    ''')
+    expect(tokens[1][9]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenizes dyn type modifier variable type declaration', ->
+    tokens = grammar.tokenizeLines("fn foo() { let bar : &dyn Debug = &32; }")
+    expect(tokens[0][9]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
+
+  it 'tokenizes dyn type modifier variable type declaration, as type parameter', ->
+    tokens = grammar.tokenizeLines("fn foo() { let b: Box<dyn Debug> = Box::new(32); }")
+    expect(tokens[0][10]).toEqual value: "dyn", scopes:['source.rust', 'storage.modifier.dyn.rust']
