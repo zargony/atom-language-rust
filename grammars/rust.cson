@@ -288,7 +288,7 @@
   {
     'comment': 'Control keyword'
     'name': 'keyword.control.rust'
-    'match': '\\b(break|continue|else|if|in|for|loop|match|return|while)\\b'
+    'match': '\\b(async|await|break|continue|else|if|in|for|loop|match|return|try|while)\\b'
   }
   {
     'comment': 'Keyword'

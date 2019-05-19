@@ -294,7 +294,7 @@ describe 'Rust grammar', ->
   #
 
   it 'tokenizes control keywords', ->
-    for t in ['break', 'continue', 'else', 'if', 'in', 'for', 'loop', 'match', 'return', 'while']
+    for t in ['async', 'await', 'break', 'continue', 'else', 'if', 'in', 'for', 'loop', 'match', 'return', 'try', 'while']
       {tokens} = grammar.tokenizeLine("text #{t} text")
       expect(tokens[0]).toEqual value: 'text ', scopes: ['source.rust']
       expect(tokens[1]).toEqual value: t, scopes: ['source.rust', 'keyword.control.rust']
